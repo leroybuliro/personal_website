@@ -1,0 +1,18 @@
+{% extends "core/error.html" %}
+{% load static %}
+
+{% block head %}
+<title>Page not found</title>
+{% endblock head %}
+
+{% block page %}
+<div style="margin: 7% 2% 7% 2%;">
+    <h3 style="color: #fff;">Page Not Found</h3>
+    <br/>
+    <div>
+        <p style="color: #fff;">The URL you have requested was not found. We apologize for any inconvenience. From here you can return to the homepage.</p>
+        <br/>
+        <a href="{% url 'core:index' %}" style="color: red; font-weight: bolder;">Go Back Home</a>
+    </div>
+</div>
+{% endblock page %}

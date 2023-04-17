@@ -1,0 +1,18 @@
+{% extends "core/error.html" %}
+{% load static %}
+
+{% block head %}
+<title>Server error</title>
+{% endblock head %}
+
+{% block page %}
+<div style="margin: 7% 2% 7% 2%;">
+    <h3 style="color: #fff;">IT'S NOT YOU, IT'S US</h3>
+    <br/>
+    <div>
+        <p style="color: #fff;">The server cannot process the request because it is malformed. It should not be retried. That's all we know. From here you can return to the homepage.</p>
+        <br/>
+        <a href="{% url 'core:index' %}" style="color: red; font-weight: bolder;">Go Back Home</a>
+    </div>
+</div>
+{% endblock page %}

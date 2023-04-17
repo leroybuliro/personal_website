@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <link rel="icon" type="image/png" href="{% static 'core/media/favicon.ico' %}"/>
+        <meta name="author" content="Leroy Buliro"/>
+        {% block head %}
+        {% endblock head %}
+        <link rel="stylesheet" href="{% static 'core/base.css' %}"/>
+        <link rel="stylesheet" href="{% static 'core/feedbackModal.css' %}">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@graph": [
+                {
+                    "@id": "#site",
+                    "@type": "Website",
+                    "name": "Leroy Buliro",
+                    "author": "Leroy Buliro",
+                    "description": "This is the official website of Leroy Buliro",
+                    "url": "https://leroy.buliro.net",
+                    "schemaVersion": "10.0",
+                    "keywords": "Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture",
+                },
+                {
+                    "@type": "Blog",
+                    "isPartOf": "#site",
+                    "name": "Logs by Leroy Buliro",
+                    "description": "The official blog of Leroy Buliro",
+                    "url": "https://leroy.buliro.net/logs/",
+                    "keywords": "Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture",
+                },
+                {
+                    "@type": "Podcast",
+                    "isPartOf": "#site",
+                    "name": "Kubonga, a podcast by Leroy Buliro",
+                    "description": "The official podcast of Leroy Buliro",
+                    "url": "https://leroy.buliro.net/kubonga-show/",
+                    "keywords": "culture",
+                }
+                ]
+            }
+        </script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function(){
+                // FEEDBACK MODAL
+                document.addEventListener('click', (event)=> {
+                    if(event.target.id=="id01"){
+                        document.querySelector('#id01').style.display='none';
+                    };
+                })    
+                
+                let message = $('.popmessage');
+                
+                $(document).ready(function(){
+                    message.fadeIn(2000)
+                    setTimeout(()=>{
+                        message.fadeOut(2000)
+                    },6000)
+                    
+                    // Check Radio-box
+                    $(".rating input:radio").attr("checked", false);
+                    
+                    $('.rating input').click(function () {
+                        $(".rating span").removeClass('checked');
+                        $(this).parent().addClass('checked');
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="popmessage">
+            <p class="message">{{ message }}</p>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <noscript>
+            <div style="display: flex; place-content: center; background-color: tomato;">
+                <p style="color: #fff; padding: 7px 0">Javascript not supported on your browser, please enable Javascript in order to fully utilize the website</p>
+            </div>
+        </noscript>
+        <div class="pagebody">
+            <nav style="backdrop-filter: blur(10px);">
+                <a id="navlogo" href="{% url 'core:home' %}">
+                    <img class="logoimg" src="{% static 'core/media/lbwhite.svg' %}" alt="logo" style="width: auto; height: 14px;">
+                </a>
+                <div class="navmenu">    
+                    {% block navmenu %}
+                    {% endblock navmenu %}
+                </div>
+                <div class="access">
+                    {% if user.is_authenticated %}
+                    <a class="accessbtn" href="{% url 'account:logout' %}">LOG OUT</a>
+                    {% else %}
+                    <a class="accessbtn" href="{% url 'account:auth' %}">LOG IN</a>
+                    {% endif %}
+                </div>
+                <!-- <div class="menu-btn">
+                    <div class="menu-btn__burger"></div>
+                </div>  -->
+            </nav>
+            
+            {% block page %}
+            {% endblock page %}
+    
+            <div id="id01" class="modal">
+                <div class="modal-content" style="max-width:600px"> 
+                    <div style="padding: 0.01em;">
+                        <p style="text-align: left; color: #000; font-size: x-large; font-weight: bold;">What's on your mind?</p>
+                        <span onclick="document.getElementById('id01').style.display='none'" class="modal-close-btn" title="Close">&times;</span>
+                    </div>
+                    <form class="modal-container" method="POST" action="">{% csrf_token %}
+                        <div class="modal-section">
+                            <div>
+                                <textarea rows="4" type="text" placeholder="We appreciate hearing your thoughts. It helps us make things better." name="content" required></textarea>
+                                <p style="color: #929292; font-size: small;">0/500 maximum characters.</p>
+                            </div>
+                            <div>
+                                <p><b>How would you rate your experience with the website?</b></p>
+                                <div class="rating">
+                                    <span><input type="radio" name="ratings" id="str5" value="5" required><label for="str5">&star;</label></span>
+                                    <span><input type="radio" name="ratings" id="str4" value="4" required><label for="str4">&star;</label></span>
+                                    <span><input type="radio" name="ratings" id="str3" value="3" required><label for="str3">&star;</label></span>
+                                    <span><input type="radio" name="ratings" id="str2" value="2" required><label for="str2">&star;</label></span>
+                                    <span><input type="radio" name="ratings" id="str1" value="1" required><label for="str1">&star;</label></span>
+                                </div>
+                                <div class="ratingdim">
+                                    <span>Awful</span>
+                                    <span>Wonderful</span>
+                                </div>
+                            </div>
+                            <p>To protect your privacy, don't include your contact info.</p>
+                            <div style="display: flex; justify-content: right; padding-top: 12px;">
+                                <button class="modal-btn-alt" type="submit" name="submitfeedback">Send feedback</button>
+                                <button class="modal-btn" onclick="document.getElementById('id01').style.display='none'" type="button">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>
+                <div class="sform">
+                    <div>
+                        <h4>SUBSCRIBE TO OUR NEWSLETTER</h4>
+                        <br/>
+                        <p>We do not send these out monthly but when we have something of value to share!</p>
+                        <!-- <p>We share our latest reports, analysis, and thematic / geographic insights through our newsletter. We do not send these out monthly but when we have something of value to share!</p> -->
+                    </div>
+                    <form method="POST" action="">{% csrf_token %}
+                        <input name="email" class="sfEmail" type="email" placeholder="Enter your email" />
+                        <button class="sfButton" type="submit" name="mailing">Sign me up</button>
+                    </form>
+                </div>
+            </div>
+            <div class="mainfooter">
+                <div class="linkfooter">
+                    <span onclick="document.getElementById('id01').style.display='block'">Send Feedback</span>
+                    <!-- <span class="split"> | </span>
+                    <span>Privacy</span>
+                    <span class="split"> | </span>
+                    <span>Terms</span> -->
+                </div>
+                <span>© 2017 - {{current_year}} Leroy Buliro.</span>
+            </div>
+        </div>
+    </body>
+</html>

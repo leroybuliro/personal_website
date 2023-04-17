@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Legal | Fueled by Leroy</title>
+        <link rel="icon" type="image/png" href="{% static 'core/media/favicon.ico' %}">
+        <!-- Load css file -->
+        <link rel="stylesheet" href="{% static 'core/legal.css' %}">
+        <!-- Load js file -->
+        <script>
+            document.addEventListener ('DOMContentLoaded', function(){
+
+                // window.onpopstate = function(event) {
+                //     console.log(event.state.section);
+                //     showSection(event.state.section);
+                // }
+
+                function showSection(section) {
+
+                    // fetch('{section}')
+
+                    document.querySelectorAll('section').forEach(section => {
+                        section.style.display = 'none';
+                    })
+                    // document.querySelector('title').innerHTML = 'Privacy FAQ - The Nairobi Sentinel'
+                    document.getElementById(section).style.display = 'block';
+                    window.scrollTo(0,0);
+                };
+
+                document.querySelectorAll('button').forEach(button  => {
+                    button.onclick = function() {
+
+                        const section = this.dataset.section;
+                        // history.pushState({section: section}, "", {section});
+                        showSection(section);                        
+                    }
+                });
+
+
+            });
+
+        </script>
+    </head>
+    <body>
+        <nav class="topnav">
+            <a id="navlogo" href="{% url 'core:index' %}">
+                <img src="{% static 'core/media/lbwhite.png' %}" alt="logo" >
+            </a>
+            <div id="navlink" style="display: flex; flex-direction: row; grid-gap: 7px;">
+                <button data-section="privacys">Privacy</button>
+                <button data-section="terms">Terms</button>
+            </div>
+        </nav>
+        <div class="pagesec">                
+            <section id="privacys">
+                {% with privacy.0 as privacy %}
+                <h1 style="text-align: center;">PRIVACY POLICY</h1>
+                <br/>
+                <h4>Effective Date: {{ privacy.date }}</h4>
+                <br>
+                <div class="content">{{ privacy.content | safe }} </div>
+                {% endwith %}
+            </section>            
+            <section id="terms">
+                {% with terms.0 as terms %}
+                <h1 style="text-align: center;">TERMS OF USE</h1>
+                <br/>
+                <h4>Effective Date: {{ terms.date }}</h4>
+                <br>
+                <div class="content">{{ terms.content | safe }}</div>
+                {% endwith %}
+            </section>
+        </div>
+        <footer>
+            <div>
+                <a>© 2022 Leroy Buliro. All rights reserved.</a>
+            </div>
+        </footer>
+    </body>
+</html>

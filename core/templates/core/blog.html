@@ -1,0 +1,105 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Logs | Leroy Buliro</title>
+<meta name="description" content="Logs by Leroy Buliro">
+<meta name="keyword" content="Tech, Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture">
+<link rel="stylesheet" href="{% static 'core/blog.css' %}">
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+        {
+            "@id": "#site",
+            "@type": "Website",
+            "name": "Leroy Buliro",
+            "author": "Leroy Buliro",
+            "description": "The official website of Leroy Buliro.",
+            "url": "https://www.buliro.net",
+            "schemaVersion": "10.0",
+            "keywords": "Leroy Buliro",
+        },
+        {
+            "@type": "Blog",
+            "isPartOf": "#site",
+            "name": "Logs by Leroy Buliro",
+            "description": "Logs by Leroy Buliro",
+            "url": "https://leroybuliro.com/logs",
+            "keywords": "Tech, Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture",
+        },
+        ]
+    }
+</script>
+{% endblock head %}
+
+{% block navmenu %}
+<a href="{% url 'core:home' %}">HOME</a>
+<a id="menuactive" >LOGS</a>
+<a href="{% url 'core:podcast' %}">PODCAST</a>
+{% endblock navmenu %}
+
+{% block page %}
+<div>
+    <div class="blogpage">
+        <div class="centered">
+            <p class="pageheader">LOGS</p>
+            <!-- <p class="pagesubheader">A Leroy Buliro Blog</p> -->
+        </div>
+        {% if featured %}
+            <section class="featured">
+                <a class="featuredsec" href="{% url 'core:article' pk=featured.id slug=featured.slug %}">                    
+                    <div class="image">
+                        {% if featured.featureimageURI %}
+                            <img class="blogimage" src="{{ featured.featureimageURI }}" alt="{{ featured.title }}">
+                        {% else %}
+                            <img class="blogimage" src="{{ featured.featureimage.url }}" alt="{{ featured.title }}">
+                        {% endif %}
+                    </div>
+                    <div class="featuredmeta">
+                        <div class="meta">
+                            <div>
+                                <span class="category">{{ featured.category }}</span>
+                            </div>
+                            <p class="title">{{ featured.title }}</p>
+                            {% if featured.extract %}
+                                <p class="extract">{{ featured.extract  }}</p>
+                            {% else %}
+                                <p class="extract">{{ featured.content | safe | truncatewords:24 }}</p>
+                            {% endif %}
+                            <p class="extra">By <strong>{{ featured.writer }}</strong> | {{ featured.publishdate }}</p>
+                        </div>
+                    </div>
+                </a>
+            </section>
+        {% endif %}
+        {% if articles %}
+            <div id="articles">
+                {% for article in articles %}
+                    <a class="articlediv" href="{% url 'core:article' pk=article.id slug=article.slug %}">                    
+                        <div class="image">
+                            {% if article.featureimageURI %}
+                                <img  class="blogimage" src="{{ article.featureimageURI }}" alt="{{ article.title }}">
+                            {% else %}
+                                <img  class="blogimage" src="{{ article.featureimage.url }}" alt="{{ article.title }}">
+                            {% endif %}
+                        </div>
+                        <div class="articlemeta">
+                            <p class="title">{{ article.title }}</p>
+                            {% if article.extract %}
+                                <span class="extract">{{ article.extract }}</span>
+                            {% else %}
+                                <span class="extract">{{ article.content | safe | truncatewords:20 }}</span>
+                            {% endif %}
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    
+    <div class="showbtn">
+        <button class="loadnext">SHOW MORE</button>
+    </div>
+</div>
+{% endblock page %}
