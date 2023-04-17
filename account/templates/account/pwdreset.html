@@ -1,0 +1,30 @@
+{% extends "account/index.html" %}
+{% load static %}
+
+{% block pagetitle %}
+Forgot your password?
+{% endblock pagetitle %}
+
+{% block pageheader %}
+<h3 style="text-align: center;">Forgot your password?</h3>
+<br>
+<P>Don't worry. Resetting your password is easy, just tell us the email address you registered with.</P>
+{% endblock pageheader %}
+        
+{% block form %}
+<form method="post" class="authform">{% csrf_token %}
+    <div>
+        <span class="formlabel">{{ form.email.label }}</span>
+        {% for error  in form.email.errors %}
+        <span class="formerror">*{{ error }}</span>
+        {% endfor %}
+        {% if sess_email %}
+        <input type="email" name="email" class="forminput" value="{{ sess_email }}" required>
+        {% else %}
+        <input type="email" name="email" class="forminput" required>
+        {% endif %}
+    </div>
+
+    <input type="submit" name="send" class="btn" value="Send password reset email">
+</form>
+{% endblock form %}

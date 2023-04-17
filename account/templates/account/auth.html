@@ -1,0 +1,24 @@
+{% extends "account/index.html" %}
+{% load static %}
+
+{% block pagetitle %}
+Enter your Email
+{% endblock pagetitle %}
+
+{% block pageheader %}
+<h3 style="text-align: center;">Log in or create your account</h3>
+{% endblock pageheader %}
+        
+{% block form %}
+<form method="post" class="authform">{% csrf_token %}
+    <div>
+        <span class="formlabel">{{ form.email.label }}</span>
+        {% for error  in form.email.errors %}
+        <span class="formerror">*{{ error }}</span>
+        {% endfor %}
+        <input type="email" name="email" class="forminput" required>
+    </div>
+
+    <input type="submit" name="search" class="btn" value="Continue">
+</form>
+{% endblock form %}

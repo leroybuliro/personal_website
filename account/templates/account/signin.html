@@ -1,0 +1,49 @@
+{% extends "account/index.html" %}
+{% load static %}
+
+{% block pagetitle %}
+Login
+{% endblock pagetitle %}
+
+{% block pageheader %}
+<h3 style="text-align: center;">Log into your account</h3>
+{% endblock pageheader %}
+
+{% block form %}
+<form action="" method="post">{% csrf_token %}    
+    <div>
+        <span class="formlabel">{{ form.email.label }}</span>
+        {% for error  in form.email.errors %}
+        <span class="formerror">*{{ error }}</span>
+        {% endfor %}
+        {% if sess_email %}
+        <a href="{% url 'account:auth' %}">
+            <input type="email" name="email" class="forminput2" value="{{ sess_email }}" readonly>
+        </a>
+        {% else %}
+        <input type="email" name="email" class="forminput" required>
+        {% endif %}
+    </div>
+
+    <div>
+        <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; font-weight: bold;">
+            <span class="formlabel">{{ form.password.label }}</span>
+            <a style="text-decoration: none;" href="{% url 'account:reset1' %}">Forgot Password?</a>
+        </div>
+        {% for error  in form.password.errors %}
+        <span class="formerror">*{{ error }}</span>
+        {% endfor %}
+        <input type="password" name="password" class="forminput" required>
+    </div>
+
+    {% if form.non_field_errors %}
+    <div>
+        {% for error in form.non_field_errors %}
+        <p class="formerror">**{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <input type="submit" name="login" class="btn" value="Log in">
+</form>
+{% endblock form %}

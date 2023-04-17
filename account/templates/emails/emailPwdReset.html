@@ -1,0 +1,13 @@
+{% autoescape on %}
+Hi there,
+
+Looks like a request was made to reset the password for your account. No problem! You can reset your password now by clicking the link below:
+
+http://{{siteURI}}{% url 'account:reset2' uidcoded=uid token=token %}
+
+The link will expire in 24hrs.
+
+If you didn't request for a password change, feel free to delete this email and carry on as usual.
+
+-- The Leroy.Buliro.net Team
+{% endautoescape %}
