@@ -68,13 +68,13 @@ Subscribe
     </div>
     {% endif %}
 
-    <!-- <div style="text-align: center;">
-        <p style="font-size: small;">By clicking Sign up, you agree to our <a href="{% url 'core:legal' %}" style="text-decoration: none; color: #5e5cd4; font-size: small;">terms of service, and privacy policy</a>.</p>
-    </div> -->
+    <div style="text-align: center;">
+        <p style="font-size: small;">By clicking Sign up, you agree to our <a href="{% url 'core:home' %}" style="text-decoration: none; color: #5e5cd4; font-size: small;">terms of service, and privacy policy</a>.</p>
+    </div>
 
     <input type="submit" name="CreateAccount" class="btn" value="Sign up">
 
-    <!-- <p style="text-align: center;">Already have an account? <a href="{% url 'account:signin' %}">Log in</a></p> -->
+    <p style="text-align: center;">Already have an account? <a href="{% url 'account:signin' %}">Log in</a></p>
 
 </form>
 {% endblock form %}
