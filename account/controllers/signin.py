@@ -56,18 +56,12 @@ def SigninView(request):
                 name = request.user.full_name
                 messages.add_message(request,messages.SUCCESS, f'Welcome back {name}')
                 del request.session['sess_email']
-                destination = request.session['next']
                 try:
-                    nextURL = request.session['nextURL']
+                    destination = request.session['next']
                 except:
-                    request.session['nextURL'] = None
-
-                nextURL = request.session['nextURL']
-                if nextURL:
-                    return redirect(nextURL)
-                else:
-                    if destination:
-                        return redirect(f'{destination}')
+                    request.session['next'] = None
+                if destination:
+                    return redirect(f'{destination}')
                 return redirect("core:index")
         else:
             context['form'] = form
