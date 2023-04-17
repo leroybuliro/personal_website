@@ -1,0 +1,124 @@
+@font-face {
+    font-family: Raleway;
+    src: url('/static/core/fonts/Raleway-VariableFont.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-family: Raleway;
+}
+
+/* Menu */
+
+.topnav {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    width: 100%;
+    height: 42px;
+    border: none;
+    background-color: #000000;
+}
+#navlogo {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    /* transform: translate(-50%, -50%); */
+}
+#navlogo > img {
+    width: auto;
+    height: 24px;
+}
+#navlink {
+    position: absolute;
+    top: 30%;
+    right: 10%;
+    display: flex;
+    flex-direction: row;
+    grid-gap: 7px;
+}
+#navlink > button {
+    border: none;
+    color: #ffffff;
+    background-color: #646464;
+    border-radius: 8px;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+@media screen and (max-width: 769px) {
+    .topnav {
+        height: 33px;
+    }
+    #navlogo {
+        top: 22%;
+        left: 2%;
+    }
+    #navlogo > img {
+        width: auto;
+        height: 18px;
+    }
+    #navlink {
+        top: 20%;
+        right: 2%;
+        grid-gap: 7px;
+    }
+}
+
+/* Page Sec */
+.pagesec {
+    padding: 4% 20%;
+}
+#terms {
+    display: none;
+}
+.content p, a, li {
+    font-size: 16px;
+    line-height: 1.4rem;
+}
+.content  a, a:hover {
+    text-decoration: none;
+}
+.content p {
+    margin: 3vh 0;
+}
+/* .content p>strong {
+    margin-bottom: 3vh;
+} */
+.content ol,ul {
+    margin: 3vh 0 0 0;
+}
+.content li {
+    margin: 3vh 0;
+}
+
+@media screen and (max-width: 770px) {
+    .pagesec {
+        padding: 4vh 2% 8vh 2%;
+    }
+    .content ol,ul {
+        margin: 3vh 0 0 3vw;
+    }
+}
+
+/* Footer */
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #000000;
+    padding: 1% 2%;
+    color: #ffffff;
+    text-align: center;
+}
+footer a,
+a:hover {
+    font-size: 12px;
+    text-decoration: none;
+}

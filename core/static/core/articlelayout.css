@@ -1,0 +1,321 @@
+@font-face {
+    font-family: CrimsonPro;
+    src: url('/static/core/fonts/CrimsonPro-VariableFont.ttf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: Raleway;
+    src: url('/static/core/fonts/Raleway-VariableFont.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: Marker;
+    src: url('/static/core/fonts/PermanentMarker-Regular.ttf') format('truetype');
+    font-weight: 700;
+}
+.pagebody {
+    background-color: #000;
+}
+.articlepage {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 2rem;
+    margin-bottom: 40px;
+}
+.articlemeta {
+    font-size: 15px;
+    display: grid;
+    width: 100%;
+    grid-template-columns:  1fr 1fr;
+    margin: 0% 0% 3% 0%;
+}
+.meta {
+    padding: 0 8%;
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    text-align: center;
+    grid-gap: 1em;
+}
+.meta a, 
+.meta a:hover {
+    text-decoration: none;
+}
+.header {
+    color: #000;
+    font-family: CrimsonPro;
+    font-size:48px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1rem;
+}
+.category {
+    font-family: CrimsonPro;
+    font-size: 1em;
+    color: #000;
+    background-color: transparent;
+    text-transform: uppercase;
+}
+.title {
+    font-family: Raleway;
+    font-size: 2em;
+    font-weight: bolder;
+    color: #000;
+    text-transform: uppercase;
+    margin: 1em 0em;
+}
+.pubDate {
+    font-family: CrimsonPro;
+    font-size: 0.8em;
+    color: #000;
+}
+.credit {
+    align-content: flex-end;
+    color: #000;
+    font-family: Raleway;
+    font-size: 0.8em;
+    line-height: 2em;
+}
+.share-options {
+    position: absolute;
+    z-index: 2;
+    bottom: -70;
+    right: -200;
+    width: auto;
+    height: auto;
+    padding: 4px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background: rgba(15, 15, 15, 0.795);
+    color: #fff;
+    transform-origin: top left;
+    transform: scale(0);
+    transition: .5s;
+    transition-delay: .5s;
+}
+.share-options.active{
+    transform: scale(1);
+    transition-delay: 0s;
+}
+.social-share{
+    /* opacity: 0;
+    transition: .5s;
+    transition-delay: 0s; */
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 7px 4px;
+    grid-gap: 7px;
+}
+.social-share-btn{
+    border: none;
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #000;
+    color: #000;
+    cursor: pointer;
+    margin: 0 3px;
+}
+.social-share-btn img {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+.share-options.active,
+.share-options.active .social-share{
+    opacity: 1;
+    transition: .5s;
+    transition-delay: .5s;
+}
+
+/* Article content */
+.articlecontent {
+    margin: 0 20%;
+}
+.content > p, h1, h2, h3, h4, h5, h6 {
+    color: #FFFFFF;
+    font-family: Raleway;
+    font-size: 1em;
+    line-height: 2em;
+}
+.content a, a:hover {
+    color: #76cbff;
+    font-family: Raleway;
+    font-size: 1em;
+    line-height: 2em;
+    text-decoration: none;
+}
+.content ul, ol {
+    color: #FFFFFF;
+    font-family: Raleway;    
+    font-size: 1em;
+    line-height: 1.4em;
+    margin-bottom: 2em;
+    padding-left: 4%;
+}
+.content p {
+    margin-bottom: 2em;
+}
+.content p:first-child::first-letter {
+    font-family: Raleway;
+    padding: 0.1em .2em;
+    font-size: 7em;
+    float: left;
+    line-height: 0.9em;
+}
+.entryend {
+    font-family: Marker;
+    text-align: center;
+    align-items: center;
+    font-size: 2em;
+    color: #FFFFFF;
+}
+.aboutsec {
+    padding: 2rem 10rem;
+    text-align: center;
+    border-top: 1px #d6d6d669 solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 2em;
+}
+.aboutsec .header {
+    font-family: CrimsonPro;
+    font-size: 2rem;
+    line-height: 3rem;
+    /* color: #EDEDED; */
+    color: #92a1a6;
+    text-decoration: underline;
+}
+.aboutsec p {
+    font-family: CrimsonPro;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    color: #92a1a6;
+}
+.aboutsec button {
+    font-family: CrimsonPro;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #92a1a6;
+    /* color: #009393; */
+    background: none;
+    border: #168dd9 1px solid;
+    border-radius: 4px;
+    padding: 0.7rem 3rem;
+    cursor: pointer;
+}
+.aboutsec .responses {
+    font-family: CrimsonPro;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    color: #92a1a6;
+}
+
+/* Comment section */
+.commentsec {
+    /* border-top: 1px silver solid; */
+    padding: 0px 30% 7rem 30%;
+}
+.commentsec p {
+    font-family: CrimsonPro;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+.commentBox {
+    padding: 14px 18px;
+    margin-bottom: 18px;
+    border-radius: 4px;
+    background-color: #04525634;
+}
+.replyBox {
+    margin: 30px 0 0 0;
+    padding: 0 0 0 20px;
+    border-left: 1px #adadad solid;
+}
+textarea {
+    width: 100%;
+    padding: 4px;
+    font-size: 14px;
+    font-family: CrimsonPro;
+}
+.closereply {
+    border: none;
+    border-radius: 4px;
+    background-color: #073944;
+    color: #ffffff;
+    font-size: medium;
+    font-weight: 400;
+    font-family: CrimsonPro;
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 4px 7px;
+}
+.replywarning {
+    background: #000;
+    border: 2px #f25c05 solid;
+    width: 100%;
+    margin: 7px 0;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+.replywarning p {
+    font: CrimsonPro 14px bold;
+    padding: 7px 2px;
+    color: #f25c05;
+}
+
+@media screen and (max-width: 810px) {
+    .articlemeta {
+        grid-template-columns:  1fr;
+    }
+    .meta {
+        padding: 27px 2%;
+        grid-gap: 8px;
+    }
+    .header {
+        font-size: 30px;
+    }
+    .category {
+        font-size: 13px;
+    }
+    .title {
+        margin: 3vh 0;
+        font-size: 22px;
+    }
+    .pubDate {
+        font-size: 13px;
+    }
+    .articlecontent {
+        margin: 32px 2% 10px 2%;
+    }
+    .content p:first-child::first-letter {
+        padding: 0.1em;
+        font-size: 7em;
+        line-height: 0.7em;
+    }
+    .content p, a, a:hover {
+        line-height: 1.4em;
+        font-size: 17px;
+    }
+    .content ul, ol {
+        line-height: 1.2em;
+        font-size: 17px;
+    }
+    .entryend {
+        font-size: 24px;
+    }
+    .aboutsec {
+        padding: 2rem 1rem;
+    }
+    .commentsec {
+        padding: 0 2% 2rem 2%;
+    }
+}

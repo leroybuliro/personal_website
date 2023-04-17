@@ -1,11 +1,6 @@
 *~
 .vscode
 
-# Project Files/Folders
-media_cdn/
-static/
-static_cdn/
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
