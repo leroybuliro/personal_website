@@ -70,14 +70,19 @@ def SubscribeView (request, *args, **kwargs):
             activationEmail(request, user) # Send activation email
             name = request.user.full_name
             messages.add_message(request,messages.SUCCESS, f"Hi {name}, your new account has been created. Click the activation link sent to your email so that we can confirm it is you.")
-            nextURL = request.session['nextURL']
             destination = request.session['next']
+            try:
+                    nextURL = request.session['nextURL']
+            except:
+                request.session['nextURL'] = None
+
+            nextURL = request.session['nextURL']
             if nextURL:
                 return redirect(nextURL)
             else:
                 if destination:
                     return redirect(f'{destination}')
-            return redirect('core:index')
+            return redirect("core:index")
         else:
             context['form'] = form
             context['alias'] = request.POST['alias']
