@@ -5,13 +5,13 @@ load_dotenv()
     
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('pwakey')
-DEBUG = False
+DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = [
     os.environ.get('IPlocal'),
     'buliro.net',
     'www.buliro.net',
-    'buliro.pythonanywhere.com',
+    'leroybuliro.pythonanywhere.com',
 ]
 
 INSTALLED_APPS = [
