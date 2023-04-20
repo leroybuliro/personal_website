@@ -259,10 +259,10 @@ nav {
     display: flex;
     flex-direction: column;
     gap: 17px;
-    border-bottom: 1px #d6d6d669 solid;
     padding: 1% 2% 2% 2%;
 }
 .disclaimers p {
+    border-bottom: 1px #d6d6d669 solid;
     font-family: CrimsonPro;
     color: #EDEDED;
     font-size: 14px;
