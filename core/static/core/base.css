@@ -254,6 +254,20 @@ nav {
     font-weight: bold;
     color: #000000;
 }
+.disclaimers {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+    border-bottom: 1px #d6d6d669 solid;
+    padding: 0 2%;
+}
+.disclaimers p {
+    font-family: CrimsonPro;
+    color: #EDEDED;
+    max-width: 500px;
+    font-size: 14px;
+}
 .mainfooter {
     display: flex;
     flex-direction: row;
@@ -319,6 +333,12 @@ nav {
         font-size: 14px;
         width: 100%;
         padding: 8px 10px;
+    }
+    .disclaimers {
+        padding: 0 2%;
+    }
+    .disclaimers p {
+        max-width: 100%;
     }
 }
 @media screen and (max-width: 342px) {
