@@ -260,7 +260,7 @@ nav {
     flex-direction: column;
     gap: 17px;
     border-bottom: 1px #d6d6d669 solid;
-    padding: 2% 2% 4% 2%;
+    padding: 2%;
 }
 .disclaimers p {
     font-family: CrimsonPro;
