@@ -168,13 +168,6 @@
     float: left;
     line-height: 0.9em;
 }
-.entryend {
-    font-family: Marker;
-    text-align: center;
-    align-items: center;
-    font-size: 2em;
-    color: #FFFFFF;
-}
 .aboutsec {
     padding: 2rem 10rem;
     text-align: center;
@@ -308,9 +301,6 @@ textarea {
     .content ul, ol {
         line-height: 1.2em;
         font-size: 17px;
-    }
-    .entryend {
-        font-size: 24px;
     }
     .aboutsec {
         padding: 2rem 1rem;
