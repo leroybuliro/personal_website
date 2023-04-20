@@ -259,13 +259,14 @@ nav {
     display: flex;
     flex-direction: column;
     gap: 17px;
-    padding: 1% 2% 2% 2%;
+    padding: 1% 2% 0 2%;
 }
 .disclaimers p {
     border-bottom: 1px #d6d6d669 solid;
     font-family: CrimsonPro;
     color: #EDEDED;
     font-size: 14px;
+    padding-bottom: 2%;
 }
 .mainfooter {
     display: flex;
@@ -334,7 +335,7 @@ nav {
         padding: 8px 10px;
     }
     .disclaimers {
-        padding: 2% 2% 4% 2%;
+        padding: 2% 2% 0 2%;
     }
 }
 @media screen and (max-width: 342px) {
