@@ -85,10 +85,10 @@ def BlogView(request):
 
     return render(request, 'core/blog.html', context)
 
-def ArticleView(request, slug):
+def ArticleView(request, pk, slug):
     context = {}
     context['current_year'] = datetime.now().year
-    obj = get_object_or_404(Article, slug=slug)
+    obj = get_object_or_404(Article, id=pk, slug=slug)
     context['article'] = obj
     next = obj.get_absolute_url()
     request.session['next'] = next

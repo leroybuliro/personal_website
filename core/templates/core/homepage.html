@@ -22,7 +22,7 @@
         <div class="title-divider"></div>
         {% if featured %}
         <section class="featured">
-            <a class="featuredsec" href="{% url 'core:article' slug=featured.slug %}">                    
+            <a class="featuredsec" href="{% url 'core:article' pk=featured.id slug=featured.slug %}">                    
                 <div class="image">
                     {% if featured.featureimageURI %}
                         <img class="blogimage" src="{{ featured.featureimageURI }}" alt="{{ featured.title }}">
@@ -50,7 +50,7 @@
         {% if articles %}
         <div id="articles">
             {% for article in articles %}
-                <a class="articlediv" href="{% url 'core:article' slug=article.slug %}">                    
+                <a class="articlediv" href="{% url 'core:article' pk=article.id slug=article.slug %}">                    
                     <div class="image">
                         {% if article.featureimageURI %}
                             <img  class="blogimage" src="{{ article.featureimageURI }}" alt="{{ article.title }}">

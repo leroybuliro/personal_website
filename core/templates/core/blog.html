@@ -45,7 +45,7 @@
         {% if articles %}
         <div id="articles">
             {% for article in articles %}
-                <a class="articlediv" href="{% url 'core:article' slug=article.slug %}">                    
+                <a class="articlediv" href="{% url 'core:article' pk=article.id slug=article.slug %}">                    
                     <div class="image">
                         {% if article.featureimageURI %}
                             <img  class="blogimage" src="{{ article.featureimageURI }}" alt="{{ article.title }}">
@@ -67,8 +67,8 @@
         {% endif %}
     </div>
     
-    <div class="showbtn">
+    <!-- <div class="showbtn">
         <button class="loadnext">SHOW MORE</button>
-    </div>
+    </div> -->
 </div>
 {% endblock page %}
