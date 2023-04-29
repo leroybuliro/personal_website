@@ -15,20 +15,20 @@ def LandpageView(request):
 
     ip = get_client_ip(request)
     Stat.objects.get_or_create(
-        page="homepage",
+        page="landing_page",
         IPAddres=ip,
         device = request.META.get('HTTP_USER_AGENT')
     )
 
-    return render(request, 'core/homepage.html', context)
+    return render(request, 'core/landpage.html', context)
 
 
 
-def BlogPodView(request):
+def HomepageView(request):
     context = {}
     context['current_year'] = datetime.now().year
     context['featured'] = Article.objects.filter(status='P').order_by('-publishdate').first()
-    context['articles'] = Article.objects.filter(status='P').order_by('-publishdate')[1:]
+    context['articles'] = Article.objects.filter(status='P').order_by('-publishdate')[1:5]
     request.session['next'] = '/home/'
 
     ip = get_client_ip(request)
@@ -53,13 +53,12 @@ def BlogPodView(request):
             messages.add_message(request,messages.SUCCESS, 'Successfully submitted')
             return redirect(reverse('core:home'))
 
-    return render(request, 'core/blog_podcast.html', context)
+    return render(request, 'core/homepage.html', context)
 
 def BlogView(request):
     context = {}
     context['current_year'] = datetime.now().year
-    context['featured'] = Article.objects.filter(status='P').order_by('-publishdate').first()
-    context['articles'] = Article.objects.filter(status='P').order_by('-publishdate')[1:]
+    context['articles'] = Article.objects.filter(status='P').order_by('-publishdate')
     request.session['next'] = '/logs/'
 
     ip = get_client_ip(request)
@@ -86,40 +85,10 @@ def BlogView(request):
 
     return render(request, 'core/blog.html', context)
 
-def PodcastView(request):
+def ArticleView(request, slug):
     context = {}
     context['current_year'] = datetime.now().year
-    request.session['next'] = '/kubonga-show/'
-
-    ip = get_client_ip(request)
-    Stat.objects.get_or_create(
-        page="podcast",
-        IPAddres=ip,
-        device = request.META.get('HTTP_USER_AGENT')
-    )
-
-    if 'submitfeedback' in request.POST:
-        form = feedbackForm(request.POST)
-        if form.is_valid():
-            form.instance.source = 'podcast'
-            form.save()
-            messages.add_message(request,messages.SUCCESS, 'Thank you for your feedback')
-            return redirect(reverse('core:podcast'))
-
-    if 'mailing' in request.POST:
-        form = mailingForm(request.POST)
-        if form.is_valid(): 
-            form.save()
-            messages.add_message(request,messages.SUCCESS, 'Successfully submitted')
-            return redirect(reverse('core:podcast'))
-
-    return render(request, 'core/podcast.html', context)
-
-
-def ArticleView(request, pk, slug):
-    context = {}
-    context['current_year'] = datetime.now().year
-    obj = get_object_or_404(Article, pk=pk, slug=slug)
+    obj = get_object_or_404(Article, slug=slug)
     context['article'] = obj
     next = obj.get_absolute_url()
     request.session['next'] = next

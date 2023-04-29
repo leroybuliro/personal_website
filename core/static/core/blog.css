@@ -14,22 +14,24 @@
     background-color: #000;
 }
 .blogpage {
-    margin: 40px 7vw 30vh 7vw;
+    padding-top: 48px;
+    margin: 0 7vw 30vh 7vw;
 }
 .centered {
     width: 100%;
-    display: grid;
-    place-items: center;
+    display: flex;
+    place-items: left;
+    margin-bottom: 40px;
 }
 .pageheader {
+    display: inline;
     color: #fff;
     font-family: CrimsonPro;
     font-size:40px;
     font-weight: bold;
-    text-align: center;
-    line-height: 1rem;
-    margin-top: 1rem;
-    margin-bottom: 1.3rem;
+    letter-spacing: 1px;
+    padding: 15px 0;
+    border-bottom: 2px #7dba5c solid;
 }
 .pagesubheader {
     color: #ededed;
@@ -44,7 +46,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    margin: 40px 0 30px 0;
+    margin: 0 0 30px 0;
 }
 .featuredsec {
     border: none;
@@ -176,9 +178,9 @@
 }
 .showbtn {
     width: 100%;
-    display: none;
+    display: flex;
     place-content: center;
-    margin: 30px 0;
+    padding: 20px 0 30px;
 }
 .loadnext {
     font-family: Raleway;
@@ -190,7 +192,6 @@
     font-weight: bold;
     border-radius: 8px;
     padding: 1% 4%;
-    display: none;
 }
 
 /** For tablet devices **/
@@ -204,7 +205,8 @@
 /** For mobile devices **/
 @media screen and (max-width: 720px) {
     .blogpage {
-        margin: 20px 1vw 70px 1vw;
+        padding-top: 24px;
+        margin: 0 1vw 70px 1vw;
     }
     .pageheader {
         font-size: 30px;
@@ -213,7 +215,7 @@
         font-size: 14px;
     }
     .featured {
-        margin: 30px 0 34px 0;
+        margin: 0 0 34px 0;
     }
     .featuredsec {
         display: flex;

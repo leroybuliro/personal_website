@@ -1,3 +1,29 @@
+/*
+----------------------------------
+
+        Name: base.css
+        Version: 0.2
+
+----------------------------------
+
+        Table of Contents
+        
+        #Reset
+        #Typography
+        #Notifications
+        #Menu
+        #Hamburger Menu
+        #Mobile Menu
+        #Main Screens
+        #Footer
+        #Responsive
+
+*/
+
+/* ==========================================================================
+   #Typography
+   ========================================================================== */
+
 @font-face {
     font-family: CrimsonPro;
     src: url('/static/core/fonts/CrimsonPro-VariableFont.ttf') format('truetype');
@@ -17,12 +43,29 @@
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
+
 body {
     position: relative;
     background-color: #000;
     overflow: hidden;
     overflow-y: scroll;
 }
+
+p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
+    font-family: Raleway;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: 400;
+    font-family: 'Oswald', sans-serif;
+    color: #818181;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   #Notifications
+   ========================================================================== */
+
 .popmessage {
     display: none;
     background-color: #ededed;
@@ -42,11 +85,9 @@ body {
     font-size: 13px;
 }
 
-p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
-    font-family: Raleway;
-}
-
-/* Menu */
+/* ==========================================================================
+   #Menu
+   ========================================================================== */
 
 nav {
     position: sticky;
@@ -113,7 +154,9 @@ nav {
     padding: 3px 10px;
 }
 
-/* Hamburger menu */
+/* ==========================================================================
+   #Hamburger Menu
+   ========================================================================== */
 
 .menu-btn {
     position: absolute;
@@ -162,7 +205,10 @@ nav {
     transform: rotate(-45deg) translate(10px, 10px);
 }
 
-/* Mobile menu */
+/* ==========================================================================
+   #Mobile Menu
+   ========================================================================== */
+
 .mobile-menu {
     display: none;
     position: fixed;
@@ -202,6 +248,39 @@ nav {
     font-weight: bold;
     font-size: 12px;
 }
+
+/* ==========================================================================
+   #Main Screens
+   ========================================================================== */
+
+.inner {
+    padding: 70px 10vw;
+}
+.gray-bc {
+    background-color: #1a1a1a;
+}
+.title {
+    letter-spacing: 2px;
+    font-size: 45px;
+    margin: 0;
+    line-height: 45px;
+}
+.title-divider {
+    width: 70px;
+    height: 5px;
+    background-color: #7dba5c;
+    margin: 30px 0 50px 0
+}
+.inner p {
+    color: #818181;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+/* ==========================================================================
+   #Footer
+   ========================================================================== */
+
 .footer {
     position: sticky;
     display: flex;
@@ -307,6 +386,43 @@ nav {
     color: #168dd9;
     margin: 0 10px;
 }
+
+/* ==========================================================================
+   #Responsive
+   ========================================================================== */
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 620px) {
+    .inner {
+        padding: 70px 2vw;
+    }
+    .title {
+        letter-spacing: 1px;
+        font-size: 30px;
+        line-height: 30px;
+    }
+    .title-divider {
+        width: 70px;
+        height: 5px;
+        margin: 20px 0 30px 0;
+    }
+    .inner p {
+        color: #818181;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+}
+
+@media screen and (max-width: 360px) {
+}
+
+/* ==========================================================================
+   #Media Ipad
+   ========================================================================== */
 
 @media screen and (max-width: 680px) {
     .navmenu {
