@@ -8,34 +8,8 @@
         <meta name="author" content="Leroy Buliro"/>
         <title>Leroy Buliro</title>
         <meta name="description" content="This is the official website of Leroy Buliro.">
-        <link rel="stylesheet" href="{% static 'core/homepage.css' %}">
-        <link rel="stylesheet" href="{% static 'core/base.css' %}">
+        <link rel="stylesheet" href="{% static 'core/landpage.css' %}">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@graph": [
-                {
-                    "@id": "#site",
-                    "@type": "Website",
-                    "name": "Leroy Buliro",
-                    "author": "Leroy Buliro",
-                    "description": "Leroy Buliro: deejay, financial advisor, writer, podcaster",
-                    "url": "https://leroybuliro.com",
-                    "schemaVersion": "10.0",
-                    "keywords": "Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture",
-                },
-                {
-                    "@type": "Blog",
-                    "isPartOf": "#site",
-                    "name": "Logs by Leroy Buliro",
-                    "description": "A-Z Logs, a blog by Leroy Buliro",
-                    "url": "https://leroybuliro.com/logs",
-                    "keywords": "Tech, Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture",
-                }
-                ]
-            }
-        </script>
     </head>
     <body>
         <div class="container">
@@ -48,14 +22,14 @@
                         </div>
                         <img src="{% static 'core/media/lbwhite.svg' %}" alt="leroy" style="width: auto; height: 20px; opacity: 0.7;">
                         <div id="socials">
-                            <a href="https://www.soundcloud.com/djlerb/" target="_blank" rel="noreferrer">
-                                <img class="slink" src="{% static 'core/assets/soundcloud.svg' %}" alt="find leroy on soundcloud">
-                            </a>
                             <a href="https://www.twitter.com/leroybuliro/" target="_blank" rel="noreferrer">
                                 <img class="slink" src="{% static 'core/assets/twitter.svg' %}" alt="find leroy on twitter">
                             </a>
                             <a href="https://www.github.com/leroybuliro/" target="_blank" rel="noreferrer">
                                 <img class="slink" src="{% static 'core/assets/github.svg' %}" alt="find leroy on github">
+                            </a>
+                            <a href="https://www.soundcloud.com/djlerb/" target="_blank" rel="noreferrer">
+                                <img class="slink" src="{% static 'core/assets/soundcloud.svg' %}" alt="find leroy on soundcloud">
                             </a>
                             <a href="https://www.linkedin.com/in/buliro/" target="_blank" rel="noreferrer">
                                 <img class="slink" src="{% static 'core/assets/linkedin.svg' %}" alt="find leroy on linkedin">

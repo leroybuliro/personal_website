@@ -2,19 +2,17 @@
 ----------------------------------
 
         Name: base.css
-        Version: 0.2
+        Version: 3
 
 ----------------------------------
 
         Table of Contents
         
-        #Reset
         #Typography
         #Notifications
         #Menu
         #Hamburger Menu
         #Mobile Menu
-        #Main Screens
         #Footer
         #Responsive
 
@@ -29,6 +27,7 @@
     src: url('/static/core/fonts/CrimsonPro-VariableFont.ttf') format('truetype');
     font-weight: 400;
 }
+
 @font-face {
     font-family: Raleway;
     src: url('/static/core/fonts/Raleway-VariableFont.ttf') format('truetype');
@@ -86,7 +85,7 @@ h1, h2, h3, h4, h5 {
 }
 
 /* ==========================================================================
-   #Menu
+   # HEADER
    ========================================================================== */
 
 nav {
@@ -163,7 +162,7 @@ nav {
     top: 50%;
     right: 2%;
     transform: translate(-0%, -50%);
-    display: none;
+    display: block;
     align-items: center;
     justify-content: center;
     width: 27px;
@@ -249,33 +248,7 @@ nav {
     font-size: 12px;
 }
 
-/* ==========================================================================
-   #Main Screens
-   ========================================================================== */
 
-.inner {
-    padding: 70px 10vw;
-}
-.gray-bc {
-    background-color: #1a1a1a;
-}
-.title {
-    letter-spacing: 2px;
-    font-size: 45px;
-    margin: 0;
-    line-height: 45px;
-}
-.title-divider {
-    width: 70px;
-    height: 5px;
-    background-color: #7dba5c;
-    margin: 30px 0 50px 0
-}
-.inner p {
-    color: #818181;
-    font-size: 14px;
-    line-height: 20px;
-}
 
 /* ==========================================================================
    #Footer
@@ -291,8 +264,8 @@ nav {
     padding: 14px 0;
 }
 .sform {
+    display: none;
     width: 100%;
-    display: flex;
     flex-direction: column;
     gap: 17px;
     border-bottom: 1px #d6d6d669 solid;
@@ -321,12 +294,12 @@ nav {
     background-color: #000000;
     padding: 4px 8px;
     border: 1px #EDEDED solid;
-    border-radius: 8px;
+    border-radius: 4px;
 }
 .sfButton {
     padding: 4px 8px;
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
     background-color: #168dd9;
     font-family: CrimsonPro;
     font-size: 14px;
@@ -414,12 +387,6 @@ nav {
     }
 }
 
-@media screen and (max-width: 420px) {
-}
-
-@media screen and (max-width: 360px) {
-}
-
 /* ==========================================================================
    #Media Ipad
    ========================================================================== */
@@ -457,6 +424,7 @@ nav {
         padding-bottom: 4%;
     }
 }
+
 @media screen and (max-width: 342px) {
     .accessbtn,
     .accessbtn:hover {

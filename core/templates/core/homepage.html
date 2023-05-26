@@ -5,19 +5,19 @@
 <title>Home | Leroy Buliro</title>
 <meta name="description" content="Logs by Leroy Buliro">
 <meta name="keyword" content="Tech, Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture">
+<link rel="stylesheet" href="{% static 'core/homepage.css' %}">
 <link rel="stylesheet" href="{% static 'core/blog.css' %}">
-<link rel="stylesheet" href="{% static 'core/podcast.css' %}"/>
 {% endblock head %}
 
 {% block navmenu %}
-<a href="{% url 'core:home' %}">HOME</a>
-<a href="{% url 'core:blog' %}">LOGS</a>
+<a href="#logs">LOGS</a>
 <a href="#podcast">PODCAST</a>
+<a href="#music">MUSIC</a>
 {% endblock navmenu %}
 
 {% block page %}
 <div>
-    <div class="blogpage">
+    <div id="logs" class="blogpage">
         <h2 class="title">LOGS</h2>
         <div class="title-divider"></div>
         {% if featured %}
@@ -25,9 +25,9 @@
             <a class="featuredsec" href="{% url 'core:article' pk=featured.id slug=featured.slug %}">                    
                 <div class="image">
                     {% if featured.featureimageURI %}
-                        <img class="blogimage" src="{{ featured.featureimageURI }}" alt="{{ featured.title }}">
+                    <img class="blogimage" src="{{ featured.featureimageURI }}" alt="{{ featured.title }}">
                     {% else %}
-                        <img class="blogimage" src="{{ featured.featureimage.url }}" alt="{{ featured.title }}">
+                    <img class="blogimage" src="{{ featured.featureimage.url }}" alt="{{ featured.title }}">
                     {% endif %}
                 </div>
                 <div class="featuredmeta">
@@ -37,9 +37,9 @@
                         </div>
                         <p class="title">{{ featured.title }}</p>
                         {% if featured.extract %}
-                            <p class="extract" style="font-size: 14px;">{{ featured.extract  }}</p>
+                        <p class="extract" style="font-size: 14px;">{{ featured.extract  }}</p>
                         {% else %}
-                            <p class="extract">{{ featured.content | safe | truncatewords:24 }}</p>
+                        <p class="extract">{{ featured.content | safe | truncatewords:24 }}</p>
                         {% endif %}
                         <p class="extra">By <strong>{{ featured.writer }}</strong> | {{ featured.publishdate }}</p>
                     </div>
@@ -53,9 +53,9 @@
                 <a class="articlediv" href="{% url 'core:article' pk=article.id slug=article.slug %}">                    
                     <div class="image">
                         {% if article.featureimageURI %}
-                            <img  class="blogimage" src="{{ article.featureimageURI }}" alt="{{ article.title }}">
+                            <img class="blogimage" src="{{ article.featureimageURI }}" alt="{{ article.title }}">
                         {% else %}
-                            <img  class="blogimage" src="{{ article.featureimage.url }}" alt="{{ article.title }}">
+                            <img class="blogimage" src="{{ article.featureimage.url }}" alt="{{ article.title }}">
                         {% endif %}
                     </div>
                     <div class="articlemeta">
@@ -72,48 +72,46 @@
         {% endif %}
     </div>
 
-    <div class="podpage">
-        <section class="podintro">
-            <div class="podside">
-                <!-- <img class="podlogo" src="{% static 'core/media/podtitle.png' %}" alt="Kubonga Show, a podcast by Leroy Buliro">  -->
-                <div>
-                    <div class="podurls">
-                        <a href="https://podcasts.apple.com/us/podcast/kubonga-show/id1470474649" target="_blank">
-                            <img src="{% static 'core/media/appleBadge.svg' %}"/>                        
-                        </a>
-                        <a href="https://music.amazon.com/podcasts/8317c891-dcea-4579-ba90-5391e8e3a176/kubonga-show" target="_blank">
-                            <img src="{% static 'core/media/amazonBadge.svg' %}"/>
-                        </a>
-                        <a href="https://open.spotify.com/show/2yUYmMbNJ2aXWDPoHF6P7D" target="_blank">
-                            <img src="{% static 'core/media/spotifyBadge.svg' %}"/>
-                        </a>
-                    </div>
-                </div>
+    <div id="podcast" class="pod_section gray-bc">
+        <section>
+            <div class="pod_header">PODCAST
+            </div>
+            <p class="pod_about">Translated to "talk" in Swahili slang - "Kubonga" is a seasonal, meandering conversation with guests where they tell their stories, converse on topics close to their heart and, yeah, just have a nice chat</p>
+            <div class="pod_urls">
+                <a href="https://podcasts.apple.com/us/podcast/kubonga-show/id1470474649" target="_blank">
+                    <img src="{% static 'core/media/appleBadge.svg' %}"/>                        
+                </a>
+                <br>
+                <a href="https://open.spotify.com/show/2yUYmMbNJ2aXWDPoHF6P7D" target="_blank">
+                    <img src="{% static 'core/media/spotifyBadge.svg' %}"/>
+                </a>
             </div>
             <div class="curve">
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                     <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
                 </svg>
             </div>
-        </section>
-        <section class="episodes">
-            <h3>About</h3>
-            <p class="about">Translated to "talk" in Swahili slang - "Kubonga" is a seasonal, meandering conversation with guests where they tell their stories, converse on topics close to their heart and, yeah, just have a nice chat</p>
-            <!-- <h3 style="color: #fff;">EPISODES</h3> -->
-        </section>
-        
+        </section>        
     </div>
 
-    <div class="inner gray-bc">
+    <div id="projects" class="inner gray-bc">
         <h2 class="title">PROJECTS & DEMOS</h2>
         <div class="title-divider"></div>
         <p>This section highlights many of the systems and projects that Leroy has worked on over the years. Click on a (mark) to see details, related papers, video demonstrations, and more.</p>
     </div>
 
-    <div class="inner">
+    <div id="music" class="inner">
         <h2 class="title">MUSIC</h2>
         <div class="title-divider"></div>
-        <p>In addition to his technology work, Leroy; also known by his stage name - LERB, is an award-winning deejay.  He is a member of the mighty Umojah Sound System. He has performed on stage in front of thousands, on radio for millions.</p>
+        <p>In addition to his technology work, Leroy; also known by his stage name - <a href="https://ra.co/dj/lerb" target="_blank" >LERB</a>, is an award-winning deejay.  He is a member of the mighty Umojah Sound System, and has performed on stage in front of thousands, on radio for thousands.</p>
+        <br><br>
+        <div class="music_img">            
+            <img src="{% static 'core/media/lerb2.jpg' %}"/>            
+            <img src="{% static 'core/media/lerb10.jpg' %}"/>            
+            <img src="{% static 'core/media/lerb11.jpeg' %}"/>            
+            <img src="{% static 'core/media/lerb4.jpg' %}"/>            
+            <img src="{% static 'core/media/lerb9.jpg' %}"/>
+        </div>
     </div>
 </div>
 {% endblock page %}

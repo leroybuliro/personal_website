@@ -48,9 +48,9 @@
                 <a class="articlediv" href="{% url 'core:article' pk=article.id slug=article.slug %}">                    
                     <div class="image">
                         {% if article.featureimageURI %}
-                            <img  class="blogimage" src="{{ article.featureimageURI }}" alt="{{ article.title }}">
+                            <img class="blogimage" src="{{ article.featureimageURI }}" alt="{{ article.title }}">
                         {% else %}
-                            <img  class="blogimage" src="{{ article.featureimage.url }}" alt="{{ article.title }}">
+                            <img class="blogimage" src="{{ article.featureimage.url }}" alt="{{ article.title }}">
                         {% endif %}
                     </div>
                     <div class="articlemeta">
