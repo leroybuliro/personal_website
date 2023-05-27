@@ -93,7 +93,6 @@
 
 .blogpage {
     padding: 20vh 7vw;
-    /* margin: 0 7vw; */
 }
 
 #articles {
@@ -183,8 +182,7 @@ article .pubDate {
 @media screen and (max-width: 767px) {
 
     .blogpage {
-        padding-top: 24px;
-        margin: 0 3vw 70px 3vw;
+        padding: 10vh 3vw;
     }
 
     #articles {
