@@ -7,10 +7,10 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('pwakey')
 
-if socket.gethostname() == "green-liveconsole11":
-    from pwa.settings_prod import *
-else:
+if socket.gethostname() == "Dev":
     from pwa.settings_dev import *
+else:
+    from pwa.settings_prod import *
 
 INSTALLED_APPS = [
     'django.contrib.admin',
