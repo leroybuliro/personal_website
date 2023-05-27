@@ -90,11 +90,11 @@ class Article(models.Model):
     status = models.CharField(max_length=10, choices=POST_STATUS)
 
     def get_absolute_url(self):
-        return f'/logs/entry-{self.id}/{self.slug}/'
+        return f'/logs/{self.id}/{self.slug}/'
 
     @property
     def url(self):
-        return f'/logs/entry-{self.id}/{self.slug}/'
+        return f'/logs/{self.id}/{self.slug}/'
 
     @property
     def viewCount(self):

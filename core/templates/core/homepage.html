@@ -1,81 +1,117 @@
-﻿{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-        <link rel="icon" type="image/png" href="{% static 'core/media/favicon.ico' %}"/>
-        <meta name="author" content="Leroy Buliro"/>
-        <title>Leroy Buliro</title>
-        <meta name="description" content="This is the official website of Leroy Buliro.">
-        <link rel="stylesheet" href="{% static 'core/homepage.css' %}">
-        <link rel="stylesheet" href="{% static 'core/base.css' %}">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@graph": [
-                {
-                    "@id": "#site",
-                    "@type": "Website",
-                    "name": "Leroy Buliro",
-                    "author": "Leroy Buliro",
-                    "description": "Leroy Buliro: deejay, financial advisor, writer, podcaster",
-                    "url": "https://leroybuliro.com",
-                    "schemaVersion": "10.0",
-                    "keywords": "Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture",
-                },
-                {
-                    "@type": "Blog",
-                    "isPartOf": "#site",
-                    "name": "Logs by Leroy Buliro",
-                    "description": "A-Z Logs, a blog by Leroy Buliro",
-                    "url": "https://leroybuliro.com/logs",
-                    "keywords": "Tech, Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture",
-                }
-                ]
-            }
-        </script>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <video src="{% static 'core/media/intro.mp4' %}" autoplay muted loop></video>
-                <section>                    
-                    <div class="links">
-                        <div class="pages">
-                            <a href="{% url 'core:home' %}">HOME</a>
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Home | Leroy Buliro</title>
+<meta name="description" content="Logs by Leroy Buliro">
+<meta name="keyword" content="Tech, Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture">
+<link rel="stylesheet" href="{% static 'core/homepage.css' %}">
+{% endblock head %}
+
+{% block navmenu %}
+<a href="#logs">LOGS</a>
+<a href="#podcast">PODCAST</a>
+<a href="#music">MUSIC</a>
+{% endblock navmenu %}
+
+{% block page %}
+<div class="home">
+    <div id="logs" class="blogpage">
+        <div class="title">LOGS</div>
+        <div class="title-divider"></div>
+
+        {% if featured %}
+        <section class="featured">
+            <a class="featuredsec" href="{% url 'core:article' pk=featured.id slug=featured.slug %}">                    
+                <div class="image">
+                    {% if featured.featureimageURI %}
+                    <img class="blogimage" src="{{ featured.featureimageURI }}" alt="{{ featured.title }}">
+                    {% else %}
+                    <img class="blogimage" src="{{ featured.featureimage.url }}" alt="{{ featured.title }}">
+                    {% endif %}
+                </div>
+                <div class="featuredmeta">
+                    <div class="meta">
+                        <div>
+                            <span class="category">{{ featured.category }}</span>
                         </div>
-                        <img src="{% static 'core/media/lbwhite.svg' %}" alt="leroy" style="width: auto; height: 20px; opacity: 0.7;">
-                        <div id="socials">
-                            <a href="https://www.soundcloud.com/djlerb/" target="_blank" rel="noreferrer">
-                                <img class="slink" src="{% static 'core/assets/soundcloud.svg' %}" alt="find leroy on soundcloud">
-                            </a>
-                            <a href="https://www.twitter.com/leroybuliro/" target="_blank" rel="noreferrer">
-                                <img class="slink" src="{% static 'core/assets/twitter.svg' %}" alt="find leroy on twitter">
-                            </a>
-                            <a href="https://www.github.com/leroysb/" target="_blank" rel="noreferrer">
-                                <img class="slink" src="{% static 'core/assets/github.svg' %}" alt="find leroy on github">
-                            </a>
-                            <a href="https://www.linkedin.com/in/buliro/" target="_blank" rel="noreferrer">
-                                <img class="slink" src="{% static 'core/assets/linkedin.svg' %}" alt="find leroy on linkedin">
-                            </a>
-                        </div>
+                        <h1>{{ featured.title }}</h1>
+                        {% if featured.extract %}
+                        <p class="extract" style="font-size: 14px;">{{ featured.extract  }}</p>
+                        {% else %}
+                        <p class="extract">{{ featured.content | safe | truncatewords:24 }}</p>
+                        {% endif %}
+                        <p class="extra">By <strong>{{ featured.writer }}</strong> | {{ featured.publishdate }}</p>
                     </div>
-                </section>
-            </div>
-        </div>
-        <noscript>
-            <div style="display: flex; place-content: center; background-color: tomato;">
-                <p style="color: #fff; padding: 7px 0">Javascript not supported on your browser, please enable Javascript in order to fully utilize the website</p>
-            </div>
-        </noscript>
-        {% if messages %}
-        {% for message in messages %}
-        <div class="popmessage">
-            <p class="message">{{ message }}</p>
-        </div>
-        {% endfor %}
+                </div>
+            </a>
+        </section>
         {% endif %}
-    </body>
-</html>
+
+        {% if articles %}
+        <div class="posts">
+            {% for article in articles %}
+            <article>
+                <a class="articlediv" href="{% url 'core:article' pk=article.id slug=article.slug %}">                    
+                    <div class="image">
+                        {% if article.featureimageURI %}
+                            <img class="blogimage" src="{{ article.featureimageURI }}" alt="{{ article.title }}">
+                        {% else %}
+                            <img class="blogimage" src="{{ article.featureimage.url }}" alt="{{ article.title }}">
+                        {% endif %}
+                    </div>
+                    <div>
+                        <h2>{{ article.title }}</h2>
+                        <br>
+                        {% if article.extract %}
+                        <span class="extract">{{ article.extract }}</span>
+                        {% else %}
+                        <span class="extract">{{ article.content | safe | truncatewords:20 }}</span>
+                        {% endif %}
+                    </div>
+                </a>
+            </article>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+    <div id="podcast" class="pod_section gray-bc">
+        <section>
+            <div class="pod_header">PODCAST</div>
+            <p class="pod_about">Translated to "talk" in Swahili slang - "Kubonga" is a seasonal, meandering conversation with guests where they tell their stories, converse on topics close to their heart and, yeah, just have a nice chat</p>
+            <div class="pod_urls">
+                <a href="https://podcasts.apple.com/us/podcast/kubonga-show/id1470474649" target="_blank">
+                    <img src="{% static 'core/media/appleBadge.svg' %}"/>                        
+                </a>
+                <br>
+                <a href="https://open.spotify.com/show/2yUYmMbNJ2aXWDPoHF6P7D" target="_blank">
+                    <img src="{% static 'core/media/spotifyBadge.svg' %}"/>
+                </a>
+            </div>
+        </section>        
+    </div>
+
+    <div id="projects" class="inner gray-bc">
+        <div class="title">PROJECTS & DEMOS</div>
+        <div class="title-divider"></div>
+        <p>This section highlights many of the systems and projects that Leroy has worked on over the years. Click on a (mark) to see details, related papers, video demonstrations, and more.</p>
+    </div>
+
+    <div id="music" class="inner">
+        <div class="title">MUSIC</div>
+        <div class="title-divider"></div>
+        <p>In addition to his technology work, Leroy; also known by his stage name - <a href="https://ra.co/dj/lerb" target="_blank" >LERB</a>, is an award-winning deejay.  He is a member of the mighty Umojah Sound System, and has performed on stage in front of thousands, on radio for thousands.</p>
+        <br><br>
+        <video src="{% static 'core/media/intro.mp4' %}" autoplay muted loop></video>
+        <br>
+        <div class="music_img">            
+            <img src="{% static 'core/media/lerb2.jpg' %}"/>            
+            <img src="{% static 'core/media/lerb10.jpg' %}"/>            
+            <img src="{% static 'core/media/lerb9.jpg' %}"/>
+            <img src="{% static 'core/media/lerb11.jpeg' %}"/>            
+            <img src="{% static 'core/media/lerb4.jpg' %}"/>            
+        </div>
+    </div>
+</div>
+{% endblock page %}
