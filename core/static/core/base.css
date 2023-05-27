@@ -16,8 +16,6 @@
         #Footer
         #Responsive
 
-*/
-
 /* ==========================================================================
    #Typography
    ========================================================================== */
@@ -54,13 +52,6 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     font-family: Raleway;
 }
 
-h1, h2, h3, h4, h5 {
-    font-weight: 400;
-    font-family: 'Oswald', sans-serif;
-    color: #818181;
-    text-transform: uppercase;
-}
-
 /* ==========================================================================
    #Notifications
    ========================================================================== */
@@ -77,6 +68,7 @@ h1, h2, h3, h4, h5 {
     border-radius: 8px;
     border: none;
 }
+
 .message {
     color: #000;
     text-align: center;
@@ -98,6 +90,7 @@ nav {
     background-color: #171a23;
     z-index: 3;
 }
+
 #navlogo {
     position: absolute;
     left: 2%;
@@ -109,16 +102,19 @@ nav {
     align-items: center;
     grid-gap: 7px;
 }
+
 .logoimg {
     width: auto;
     height: 17px;
 }
+
 .navmenu {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
 .navmenu a {
     padding: 5px 14px;
     text-decoration: none;
@@ -128,18 +124,21 @@ nav {
     color: #fff;
     border: none;
 }
+
 .navmenu a:hover {
     font-size: 12px;
     text-decoration: none;
     background-color: #fff;
     color: #000;
 }
+
 .access {
     position: absolute;
     right: 2%;
     top: 50%;
     transform: translate(-0%, -50%);
 }
+
 .accessbtn,
 .accessbtn:hover {
     text-decoration: none;
@@ -170,6 +169,7 @@ nav {
     cursor: pointer;
     transition: all 400ms ease-in-out;
 }
+
 .menu-btn__burger {
     width: 14px;
     height: 2px;
@@ -177,6 +177,7 @@ nav {
     border-radius: 4px;
     transition: all 400ms ease-in-out;
 }
+
 .menu-btn__burger::before,
 .menu-btn__burger::after {
     content: '';
@@ -187,19 +188,24 @@ nav {
     border-radius: 4px;
     transition: all 400ms ease-in-out;
 }
+
 .menu-btn__burger::before {
     transform: translateY(-8px)
 }
+
 .menu-btn__burger::after {
     transform: translateY(8px);
 }
+
 .menu-btn.open .menu-btn__burger{
     transform: translateX(-18px);
     background: transparent;
 }
+
 .menu-btn.open .menu-btn__burger::before{
     transform: rotate(45deg) translate(10px, -10px);
 }
+
 .menu-btn.open .menu-btn__burger::after{
     transform: rotate(-45deg) translate(10px, 10px);
 }
@@ -221,34 +227,79 @@ nav {
     padding: 4px 0;
     z-index: 3;
 }
+
 .mobile-menu a,
 .mobile-menu a:hover {
     text-decoration: none;
 }
+
 .mobile-menu-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
 }
+
 .mobile-menu-item img {
     max-height: 30px;
 }
+
 .mobile-menu-item svg {
     color: #ccc;
 }
+
 .mobile-menu-item span {
     font-family: CrimsonPro;
     color: #009393;
     font-size: 12px;
 }
+
 #pageactive {
     color: #168dd9;
     font-weight: bold;
     font-size: 12px;
 }
 
+/* ==========================================================================
+   #Curve
+   ========================================================================== */
 
+.curve {
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #000000;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.curve svg {
+    margin-bottom: 0;
+    display: block;
+    width: calc(144% + 1.3px);
+    height: 80px;
+    transform: rotateY(0deg);
+}
+
+.curve .shape-fill {
+    fill: #171a23;
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .curve svg {
+        width: calc(134% + 1.3px);
+        height: 80px;
+    }
+}
+
+/** For tablet devices **/
+@media (min-width: 768px) and (max-width: 1023px) {
+    .curve svg {
+        width: calc(126% + 1.3px);
+        height: 127px;
+    }
+}
 
 /* ==========================================================================
    #Footer
@@ -263,6 +314,7 @@ nav {
     background-color: #171a23;
     padding: 14px 0;
 }
+
 .sform {
     display: none;
     width: 100%;
@@ -271,10 +323,12 @@ nav {
     border-bottom: 1px #d6d6d669 solid;
     padding: 0 2%;
 }
+
 .sform h4 {
     font-family: CrimsonPro;
     color: #EDEDED;
 }
+
 .sform p {
     font-family: CrimsonPro;
     color: #EDEDED;

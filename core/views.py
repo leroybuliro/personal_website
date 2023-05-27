@@ -28,7 +28,7 @@ def HomepageView(request):
     context = {}
     context['current_year'] = datetime.now().year
     context['featured'] = Article.objects.filter(status='P').order_by('-publishdate').first()
-    context['articles'] = Article.objects.filter(status='P').order_by('-publishdate')[1:5]
+    context['articles'] = Article.objects.filter(status='P').order_by('-publishdate')[1:]
     request.session['next'] = '/home/'
 
     ip = get_client_ip(request)

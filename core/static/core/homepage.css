@@ -9,22 +9,313 @@
         Table of Contents
         
         #Reset
+        #Typography
+        #Log Screen
+        #Log Screen: Feature
+        #Log Screen: Posts
         #Podcast Screen
-        #Other Screens
-
+        #Music Screen
 
 /* ==========================================================================
-   # Podcast Screen
+   #Typography
+   ========================================================================== */
+   
+.gray-bc {
+    background-color: #1a1a1a;
+}
+
+.home .inner {
+    padding: 70px 10vw;
+}
+
+.home .title {
+    margin: 0;
+    line-height: 45px;
+    font-weight: 400;
+    font-family: 'Oswald', sans-serif;
+    font-size: 45px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #818181;
+}
+
+.home .title-divider {
+    width: 70px;
+    height: 5px;
+    background-color: #7dba5c;
+    margin: 30px 0 50px 0
+}
+
+.home .inner p {
+    color: #818181;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.home .inner a {
+    text-decoration: none;
+    color: #7dba5c;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.home .inner a:hover {
+    text-decoration: underline;
+    color: #7dba5c;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+/* ==========================================================================
+   #Log Screen
+   ========================================================================== */
+
+.blogpage {
+    padding-top: 48px;
+    margin: 0 7vw 30vh 7vw;
+}
+
+/** For mobile devices **/
+
+@media screen and (max-width: 767px) {
+    .blogpage {
+        padding-top: 24px;
+        margin: 0 3vw 70px 3vw;
+    }
+}
+
+/* ==========================================================================
+   #Log Screen: Feature
+   ========================================================================== */
+
+.featured {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 0 0 30px 0;
+}
+
+.featuredsec {
+    border: none;
+    text-decoration: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 22px;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+.featuredsec .image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+}
+
+.featuredsec .blogimage {
+    width: 100%;
+    height: 100%;
+}
+
+.featuredmeta {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: left;
+}
+
+.meta {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.meta .category {
+    display: inline-block;
+    border-bottom: 2px #EDEDED solid;
+    color: #ededed;
+    font-family: CrimsonPro;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.meta h1 {
+    font-size: 32px;
+    color: #FFFFFF;
+    font-family: CrimsonPro;
+    font-weight: bold;
+}
+
+.featuredsec:hover h1 {
+    text-decoration: underline;
+}
+
+.meta .extract {
+    color: #EDEDED;
+    font-family: Raleway;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.meta .extract:hover {
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.meta .extra {
+    color: #EDEDED;
+    font-family: CrimsonPro;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/** For mobile devices **/
+
+@media screen and (max-width: 767px) {
+
+    .featured {
+        margin: 0 0 34px 0;
+    }
+
+    .featuredsec {
+        display: flex;
+        flex-direction: column;
+        gap: 17px;
+    }
+
+    .featuredmeta {
+        margin: 0 4px;
+    }
+
+    .meta {
+        gap: 10px;
+    }
+    .meta .category {
+        font-size: 13px;
+    }
+
+    .meta .extra {
+        font-size: 13px;
+    }
+}
+
+/* ==========================================================================
+   #Log Screen: Posts
+   ========================================================================== */
+
+.posts {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 22px;
+}
+
+.articlediv {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    color: #FFFFFF;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.articlediv:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.articlediv:hover h2 {
+    text-decoration: underline;
+}
+
+.articlediv .image {
+    object-fit: fill;
+    object-position: center;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+.articlediv .blogimage {
+    height: 100%;
+    transform: scale(1);
+    transition: 700ms ease-in-out;
+}
+
+.articlediv:hover .blogimage {
+    transform: scale(1.2);
+}
+
+.posts h2 {
+    color: #FFFFFF;
+    font-family: CrimsonPro;
+    text-align: center;
+}
+
+.posts .extract {
+    font-family: Raleway;
+    font-size: 14px;
+    line-height: 1.2rem;
+    color: #EDEDED;
+    text-align: center;
+}
+
+.showbtn {
+    width: 100%;
+    display: flex;
+    place-content: center;
+    padding: 20px 0 30px;
+}
+
+.loadnext {
+    font-family: Raleway;
+    border: 1px #016170 solid;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    font-size: small;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 1% 4%;
+}
+
+/** For mobile devices **/
+@media screen and (max-width: 767px) {
+
+    .posts {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        margin: 0 4px;
+    }
+    .articlediv {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .posts h2 {
+        text-align: left;
+    }
+
+    .posts .extract {
+        text-align: left;
+    }
+}
+
+/* ==========================================================================
+   #Podcast Screen
    ========================================================================== */
 
 .pod_section {
-    margin: 0 8% 0 0;
+    margin: 0 8% 70px 0;
     position: relative;
 }
 
 .pod_section section {
     z-index: 1;
-    background: url('/static/core/media/podBg.jpg') no-repeat;
+    background: url('/static/core/media/podBg.jpg') center no-repeat;
     background-size: cover;
     position: relative;
     width: 100%;
@@ -68,49 +359,18 @@
     margin-right: 10px;
 }
 
-/** Curve **/
-.curve {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-}
-.curve svg {
-    margin-bottom: 0;
-    position: relative;
-    display: block;
-    width: calc(144% + 1.3px);
-    height: 80px;
-    transform: rotateY(0deg);
-}
-.curve .shape-fill {
-    fill: #1a1a1a;
-}
 
 /** For tablet devices **/
+
 @media (min-width: 768px) and (max-width: 1023px) {
-
-    .pod_section section {
-        background: url('/static/core/media/podBg.jpg') no-repeat;
-    }
-
     .pod_about {
         width: 420px;
-    }
-    .curve svg {
-        width: calc(126% + 1.3px);
-        height: 127px;
     }
 }
 
 /** For mobile devices **/
-@media (max-width: 767px) {
 
-    .pod_section section {
-        background: url('/static/core/media/podBg.jpg') 50% no-repeat;
-    }
+@media (max-width: 767px) {
 
     .pod_header {
         padding: 10px 20px;
@@ -133,48 +393,15 @@
         width: 120px;
         height: auto;
     }
-
-    .curve svg {
-        width: calc(134% + 1.3px);
-        height: 80px;
-    }
 }
 
 /* ==========================================================================
-   #Other Screens
+   #Music Screen
    ========================================================================== */
-
-.inner {
-    padding: 70px 10vw;
+video {
+    width: 100%;
+    height: auto;
 }
-.gray-bc {
-    background-color: #1a1a1a;
-}
-.title {
-    letter-spacing: 2px;
-    font-size: 45px;
-    margin: 0;
-    line-height: 45px;
-}
-.title-divider {
-    width: 70px;
-    height: 5px;
-    background-color: #7dba5c;
-    margin: 30px 0 50px 0
-}
-.inner p {
-    color: #818181;
-    font-size: 14px;
-    line-height: 20px;
-}
-
-.inner a {
-    text-decoration: none;
-    color: #7dba5c;
-    font-size: 14px;
-    line-height: 20px;
-}
-
 .music_img {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -186,7 +413,7 @@
     height: auto;
 }
 
-.music_img img:nth-child(5) {
+.music_img img:nth-child(3) {
     grid-column-start: 1;
     grid-column-end: 3;
 }

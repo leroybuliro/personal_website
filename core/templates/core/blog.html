@@ -34,17 +34,29 @@
 {% endblock head %}
 
 {% block navmenu %}
-<a href="{% url 'core:home' %}">HOME</a>
+<!-- <a href="{% url 'core:home' %}">HOME</a>
 <a id="menuactive" >LOGS</a>
-<a href="{% url 'core:home' %}">PODCAST</a>
+<a href="{% url 'core:home' %}">PODCAST</a> -->
 {% endblock navmenu %}
 
 {% block page %}
 <div>
+    <div class="search">
+        <div>
+            <input type="text" placeholder="Search">
+            <img class="icon_search" src="{% static 'core/media/search.svg' %}" >
+        </div>
+        <div class="filter">
+            <button>Date range</button>
+            <button>Category</button>
+            <button>Clear filters</button>
+        </div>
+    </div>
     <div class="blogpage">
         {% if articles %}
         <div id="articles">
             {% for article in articles %}
+            <article>
                 <a class="articlediv" href="{% url 'core:article' pk=article.id slug=article.slug %}">                    
                     <div class="image">
                         {% if article.featureimageURI %}
@@ -53,15 +65,19 @@
                             <img class="blogimage" src="{{ article.featureimage.url }}" alt="{{ article.title }}">
                         {% endif %}
                     </div>
-                    <div class="articlemeta">
-                        <p class="title">{{ article.title }}</p>
+                    <div>
+                        <h2>{{ article.title }}</h2>
+                        <br>
                         {% if article.extract %}
-                            <span class="extract">{{ article.extract }}</span>
+                            <div class="extract">{{ article.extract }}</div>
                         {% else %}
-                            <span class="extract">{{ article.content | safe | truncatewords:20 }}</span>
+                            <div class="extract">{{ article.content | safe | truncatewords:20 }}</div>
                         {% endif %}
+                        <br>
+                        <div class="pubDate">{{ article.publishdate }}</div>
                     </div>
                 </a>
+            </article>
             {% endfor %}
         </div>
         {% endif %}
