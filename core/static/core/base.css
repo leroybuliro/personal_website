@@ -400,14 +400,6 @@ nav {
     padding: 0 2%;
 }
 
-.mainfooter span {
-    font-family: CrimsonPro;
-    font-size: 13px;
-    text-align: center;
-    color: #ffffff;
-    text-decoration: none;
-}
-
 .mainfooter > a, a:hover {
     font-family: CrimsonPro;
     font-size: 13px;
@@ -416,19 +408,20 @@ nav {
     text-decoration: none;
 }
 
-.linkfooter {
+.mainfooter1 {
     display: flex;
     flex-direction: row;
     padding: 0;
 }
-.linkfooter > span, span:hover {
+.mainfooter1 > span, span:hover {
     font-family: CrimsonPro;
     font-size: 13px;
     color: #ffffff;
     text-decoration: none;
+    text-align: center;
     cursor: pointer;
 }
-.linkfooter .split {
+.mainfooter1 .split {
     font-size: 13px;
     color: #168dd9;
     margin: 0 10px;
@@ -519,6 +512,7 @@ nav {
     border: 3px solid gray;
     background-color: #000000;
 }
+
 .intro .introText {
     text-align: center;
     white-space: nowrap;
@@ -534,14 +528,17 @@ nav {
     -moz-animation: flow 14s linear infinite;
     -webkit-animation: flow 14s linear infinite;
 }
+
 @-moz-keyframes flow {
     from { -moz-transform: translateX(100%);}
     to {-moz-transform: translateX(-100%);}
 }
+
 @-webkit-keyframes flow {
     from { -webkit-transform: translateX(100%);}
     to {-webkit-transform: translateX(-100%);}
 }
+
 @keyframes flow {
     from {
         -moz-transform: translateX(100%);
