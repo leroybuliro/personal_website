@@ -95,17 +95,22 @@ section {
     align-items: center;
     justify-content: center;
 }
+
 #socials > a, a:hover {
     text-decoration: none;
 }
+
 .slink {
     width: 14px;
     height: 14px;
 }
+
 @media screen and (max-width: 680px) {
+
     .image {
         bottom: 17%;
     }
+    
     .slink {
         width: 15px;
         height: 15px;

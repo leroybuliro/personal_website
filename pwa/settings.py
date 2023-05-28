@@ -1,4 +1,3 @@
-import socket
 import os
 from dotenv import load_dotenv
 from pathlib import Path
@@ -7,7 +6,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('pwakey')
 
-if socket.gethostname() == "Dev":
+if os.getenv('environment') == "dev":
     from pwa.settings_dev import *
 else:
     from pwa.settings_prod import *

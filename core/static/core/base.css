@@ -14,7 +14,7 @@
         #Hamburger Menu
         #Mobile Menu
         #Footer
-        #Responsive
+        #Popup
 
 /* ==========================================================================
    #Typography
@@ -150,6 +150,23 @@ nav {
     border-radius: 4px;
     border: none;
     padding: 3px 10px;
+}
+
+@media screen and (max-width: 680px) {
+    .navmenu {
+        display: none;
+    }
+    .mobile-menu {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 342px) {
+    .accessbtn,
+    .accessbtn:hover {
+        font-size: 10px;
+        padding: 3px 7px;
+    }
 }
 
 /* ==========================================================================
@@ -382,13 +399,15 @@ nav {
     justify-content: space-between;
     padding: 0 2%;
 }
-.mainfooter > span {
+
+.mainfooter span {
     font-family: CrimsonPro;
     font-size: 13px;
     text-align: center;
     color: #ffffff;
     text-decoration: none;
 }
+
 .mainfooter > a, a:hover {
     font-family: CrimsonPro;
     font-size: 13px;
@@ -415,78 +434,79 @@ nav {
     margin: 0 10px;
 }
 
-/* ==========================================================================
-   #Responsive
-   ========================================================================== */
-
-@media screen and (max-width: 768px) {
+.mainfooter2 {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
 }
 
-@media screen and (max-width: 620px) {
-    .inner {
-        padding: 70px 2vw;
-    }
-    .title {
-        letter-spacing: 1px;
-        font-size: 30px;
-        line-height: 30px;
-    }
-    .title-divider {
-        width: 70px;
-        height: 5px;
-        margin: 20px 0 30px 0;
-    }
-    .inner p {
-        color: #818181;
-        font-size: 14px;
-    }
+.mainfooter2 span {
+    font-family: CrimsonPro;
+    font-size: 13px;
+    text-align: center;
+    color: #ffffff;
+    text-decoration: none;
 }
 
-/* ==========================================================================
-   #Media Ipad
-   ========================================================================== */
+.mainfooter2 .socials {
+    display: flex;
+    gap: 17px;
+    align-items: center;
+    justify-content: center;
+}
 
-@media screen and (max-width: 680px) {
-    .navmenu {
-        display: none;
-    }
-    .mobile-menu {
-        display: flex;
-    }
+.mainfooter2 .socials > a, a:hover {
+    text-decoration: none;
+}
+
+.mainfooter2 .socials .slink {
+    width: 14px;
+    height: 14px;
+}
+
+@media screen and (max-width: 767px) {
+
     .sform {
         padding: 0 2%;
     }
+
     .sform p {
         max-width: 100%;
     }
+
     .sform form {
         flex-direction: column;
     }
+
     .sfEmail {
         font-size: 14px;
         width: 100%;
         padding: 8px 10px;
     }
+
     .sfButton {
         font-size: 14px;
         width: 100%;
         padding: 8px 10px;
     }
+
     .disclaimers {
         padding: 2% 2% 0 2%;
     }
+
     .disclaimers p {
         padding-bottom: 4%;
     }
-}
 
-@media screen and (max-width: 342px) {
-    .accessbtn,
-    .accessbtn:hover {
-        font-size: 10px;
-        padding: 3px 7px;
+    .mainfooter2 .socials .slink {
+        width: 10px;
+        height: 10px;
     }
 }
+
+/* ==========================================================================
+   #Popup
+   ========================================================================== */
 
 .intro {
     position: absolute;

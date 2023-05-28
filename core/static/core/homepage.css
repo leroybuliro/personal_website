@@ -73,11 +73,15 @@
     }
 
     .home .title {
-        font-size: 20px;
+        letter-spacing: 1px;
+        font-size: 30px;
+        line-height: 30px;
     }
 
     .home .title-divider {
-        margin: 15px 0 25px 0
+        margin: 15px 0 25px 0;
+        width: 70px;
+        height: 5px;
     }
 }
 
