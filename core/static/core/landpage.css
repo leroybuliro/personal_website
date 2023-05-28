@@ -89,14 +89,14 @@ section {
     cursor: pointer;
 }
 
-#socials {
+.socials {
     display: flex;
     gap: 17px;
     align-items: center;
     justify-content: center;
 }
 
-#socials > a, a:hover {
+.socials > a, a:hover {
     text-decoration: none;
 }
 
@@ -110,7 +110,7 @@ section {
     .image {
         bottom: 17%;
     }
-    
+
     .slink {
         width: 15px;
         height: 15px;
