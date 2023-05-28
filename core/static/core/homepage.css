@@ -379,6 +379,29 @@
     margin-right: 10px;
 }
 
+.pod_section .credit {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    background-color: #000000b3;
+}
+
+.pod_section .credit a {
+    text-decoration: none;
+    font-family: CrimsonPro;
+    font-size: 14px;
+    color: #FFFFFF;
+    padding: 4px 8px;
+}
+
+.pod_section .credit a:hover {
+    text-decoration: none;
+    font-family: CrimsonPro;
+    font-size: 14px;
+    color: #FFFFFF;
+    padding: 4px 8px;
+}
 
 /** For tablet devices **/
 
