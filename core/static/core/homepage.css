@@ -334,10 +334,10 @@
 }
 
 .pod_section section {
+    position: relative;
     z-index: 1;
     background: url('/static/core/media/podBg.jpg') center no-repeat;
     background-size: cover;
-    position: relative;
     width: 100%;
     height: 620px;
     padding: 8vh 10% 200px 10%;

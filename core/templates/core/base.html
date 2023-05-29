@@ -146,57 +146,35 @@
             </div>
         </div>
 
-        <div class="curve">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
-            </svg>
-        </div>
-        <div class="footer">
-            <div>
-                <div class="sform">
-                    <div>
-                        <h4>SUBSCRIBE TO OUR NEWSLETTER</h4>
-                        <br/>
-                        <p>We do not send these out monthly but when we have something of value to share!</p>
-                        <!-- <p>We share our latest reports, analysis, and thematic / geographic insights through our newsletter. We do not send these out monthly but when we have something of value to share!</p> -->
-                    </div>
-                    <form method="POST" action="">{% csrf_token %}
-                        <input name="email" class="sfEmail" type="email" placeholder="Enter your email" />
-                        <button class="sfButton" type="submit" name="mailing">Sign me up</button>
-                    </form>
-                </div>
+        <footer>
+            <div class="review">
+                <img onclick="document.getElementById('id01').style.display='block'" src="{% static 'core/media/review.svg' %}" alt="send feedback">
             </div>
+
             <div class="disclaimers">
                 <p>Statements on my—websites, social media profiles, presentations, recordings, software, and all other forms of publication 
                     and media—reflect my personal opinions and do not represent the views and/or policies of my employer(s), past or present, 
                     or any other organization with which I may be affiliated. See my legal page to learn about all disclaimers that apply to this site.</p>
             </div>
-            <div class="mainfooter">
-                <div class="mainfooter1">
-                    <span onclick="document.getElementById('id01').style.display='block'">Send Feedback</span>
-                    <!-- <span class="split"> | </span>
-                    <span>Privacy</span>
-                    <span class="split"> | </span>
-                    <span>Terms</span> -->
-                </div>
-                <div class="mainfooter2">
-                    <span>© 2017 - {{current_year}} Leroy Buliro.</span>
-                    <div class="socials">
-                        <a href="https://www.twitter.com/leroybuliro/" target="_blank" rel="noreferrer">
-                            <img class="slink" src="{% static 'core/assets/twitter.svg' %}" alt="find leroy on twitter">
-                        </a>
-                        <a href="https://www.github.com/leroybuliro/" target="_blank" rel="noreferrer">
-                            <img class="slink" src="{% static 'core/assets/github.svg' %}" alt="find leroy on github">
-                        </a>
-                        <a href="https://www.soundcloud.com/djlerb/" target="_blank" rel="noreferrer">
-                            <img class="slink" src="{% static 'core/assets/soundcloud.svg' %}" alt="find leroy on soundcloud">
-                        </a>
-                        <a href="https://www.linkedin.com/in/buliro/" target="_blank" rel="noreferrer">
-                            <img class="slink" src="{% static 'core/assets/linkedin.svg' %}" alt="find leroy on linkedin">
-                        </a>
-                    </div>
+
+            <div class="footer">
+                <span>© 2017 - {{current_year}} Leroy Buliro.</span>
+                <div class="socials">
+                    <a href="https://www.twitter.com/leroybuliro/" target="_blank" rel="noreferrer">
+                        <img class="slink" src="{% static 'core/media/twitter.svg' %}" alt="find leroy on twitter">
+                    </a>
+                    <a href="https://www.github.com/leroybuliro/" target="_blank" rel="noreferrer">
+                        <img class="slink" src="{% static 'core/media/github.svg' %}" alt="find leroy on github">
+                    </a>
+                    <a href="https://www.soundcloud.com/djlerb/" target="_blank" rel="noreferrer">
+                        <img class="slink" src="{% static 'core/media/soundcloud.svg' %}" alt="find leroy on soundcloud">
+                    </a>
+                    <a href="https://www.linkedin.com/in/buliro/" target="_blank" rel="noreferrer">
+                        <img class="slink" src="{% static 'core/media/linkedin.svg' %}" alt="find leroy on linkedin">
+                    </a>
                 </div>
             </div>
-        </div>
+
+        </footer>
     </body>
 </html>
