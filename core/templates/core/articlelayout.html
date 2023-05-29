@@ -5,7 +5,7 @@
 <title>{{ article.title }} | Logs by Leroy Buliro</title>
 <meta name="description" content="{{ article.extract }}">
 <meta name="keyword" content="{{episode.tags}}">
-<link rel="stylesheet" href="{% static 'core/articlelayout.css' %}">
+<link rel="stylesheet" href="{% static 'core/styles/articlelayout.css' %}">
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', ()=> {
         $(document).ready(()=> {
@@ -119,9 +119,9 @@
                 <div style="display: flex; flex-direction: row; justify-content: space-between;">
                     <p style="color: #c2c2c2b9; font-weight: bolder;">👤 {{ comment.user.alias }}<br>🕰 {{ comment.timestamp |  date:'F j, Y'}}</p>
                     <div style="display: flex; flex-direction: row; gap: 17px;">
-                        <img class="readyreply" src="{% static 'core/assets/reply.svg' %}" alt="reply to {{ comment.user.alias }}:  {{ comment.content | safe }}" width="20" height="20" style="cursor: pointer;">
+                        <img class="readyreply" src="{% static 'core/media/reply.svg' %}" alt="reply to {{ comment.user.alias }}:  {{ comment.content | safe }}" width="20" height="20" style="cursor: pointer;">
                         {% if request.user == comment.user %}
-                        <img class="readydelete" src="{% static 'core/assets/delete.svg' %}" alt="delete comment" width="20" height="20" style="cursor: pointer;">
+                        <img class="readydelete" src="{% static 'core/media/delete.svg' %}" alt="delete comment" width="20" height="20" style="cursor: pointer;">
                         {% endif %}
                         <!-- <img src="{% static 'core/media/flag.svg' %}" alt="flag comment" width="20" height="20" style="cursor: pointer;"> -->
                     </div>
@@ -180,7 +180,7 @@
                     </div>
                     <div style="display: flex; flex-direction: row; gap: 17px;">
                         {% if request.user == reply.user %}
-                        <img class="readydelete2" src="{% static 'core/assets/delete.svg' %}" alt="delete comment" width="20" height="20" style="cursor: pointer;">
+                        <img class="readydelete2" src="{% static 'core/media/delete.svg' %}" alt="delete comment" width="20" height="20" style="cursor: pointer;">
                         {% endif %}
                         <!-- <img src="{% static 'core/media/flag.svg' %}" alt="flag comment" width="20" height="20" style="cursor: pointer;"> -->
                     </div>
