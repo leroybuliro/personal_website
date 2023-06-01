@@ -10,7 +10,7 @@ Login
 {% endblock pageheader %}
 
 {% block form %}
-<form action="" method="post">{% csrf_token %}    
+<form action="" method="post">{% csrf_token %}
     <div>
         <span class="formlabel">{{ form.email.label }}</span>
         {% for error  in form.email.errors %}

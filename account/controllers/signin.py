@@ -48,8 +48,8 @@ def SigninView(request):
     if request.POST:
         form = signinForm(request.POST)
         if form.is_valid():
-            email = request.POST['email']
-            password = request.POST['password']
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
             user = authenticate(request, email=email, password=password)
             if user:
                 login(request, user)
