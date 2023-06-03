@@ -1,0 +1,238 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block head %}
+<title>{{ article.title }} | Logs by Leroy Buliro</title>
+<meta name="description" content="{{ article.extract }}">
+<meta name="keyword" content="{{episode.tags}}">
+<link rel="stylesheet" href="{% static 'core/styles/articlelayout.css' %}">
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', ()=> {
+        $(document).ready(()=> {
+            const background = document.querySelector('.meta')
+            const choices = ['#ffc16c', '#92a1a6', 'ddfc74', 'd3f9b5', '139a43', '7ae582']
+            const randomNumber = Math.floor(Math.random()*6)
+            const selection = choices[randomNumber]
+            background.style.background = selection
+            var replystatus = 'closed'
+        });
+
+        $('#commentnow').click(()=> {
+            $(window).scrollTop($('.aboutsec').offset().top)
+        })
+        
+        $('.readyreply').click(function(event){
+            $('.readyreply').parent().parent().parent().next().fadeOut(1000)
+            $('.readydelete').parent().parent().parent().next().next().fadeOut(1000)
+            $('.readydelete2').parent().parent().next().fadeOut(1000)
+            setTimeout(()=>{   
+                $(this).parent().parent().parent().next().fadeToggle(1000)
+            }, 1000)
+        })
+        $('.closereply').click(function(){
+            $(this).closest('.replyform').fadeOut(2000)
+        })
+        
+        $('.readydelete').click(function(event){
+            $('.readydelete').parent().parent().parent().next().next().fadeOut(1000)
+            $('.readyreply').parent().parent().parent().next().fadeOut(1000)
+            $('.readydelete2').parent().parent().next().fadeOut(1000)
+            setTimeout(()=>{   
+                $(this).parent().parent().parent().next().next().fadeToggle(1000)
+            }, 1000)
+        })
+        $('.readydelete2').click(function(event){
+            $('.readydelete2').parent().parent().next().fadeOut(1000)
+            $('.readyreply').parent().parent().parent().next().fadeOut(1000)
+            $('.readydelete').parent().parent().parent().next().next().fadeOut(1000)
+            setTimeout(()=>{   
+                $(this).parent().parent().next().fadeToggle(2000)
+            }, 1000)
+        })
+        $('.closedelete').click(function(){
+            $(this).closest('.deleteform').fadeOut(2000)
+        })
+    })
+</script>
+{% endblock head %}
+
+{% block navmenu %}
+<!-- <a href="{% url 'core:home' %}">HOME</a>
+<a href="{% url 'core:blog' %}">LOGS</a>
+<a href="{% url 'core:home' %}">PODCAST</a> -->
+{% endblock navmenu %}
+
+{% block page %}
+<div class="articlepage">
+    <article>
+        <section class="articlemeta">
+            {% if article.featureimageURI %}
+            <img src="{{ article.featureimageURI }}" alt="{{ article.title }}" height="720" width="480" style="height: auto; width: 100%; object-fit: cover;">
+            {% else %}
+            <img src="{{ article.featureimage.url }}" alt="{{ article.title }}" height="720" width="480" style="height: auto; width: 100%; object-fit: cover;">
+            {% endif %}
+            <div class="meta">
+                <a href="{% url 'core:blog' %}" style="text-decoration: none;">
+                    <p class="header">LOGS</p>
+                </a>
+                <div class="category">{{ article.category }}</div>
+                <div class="title">{{ article.title }}</div>
+                <div class="pubDate">By <strong>{{ article.writer }}</strong> | {{ article.publishdate }}</div>
+                {% if article.credit %}
+                <span class="credit">{{ article.credit }}</span>
+                {% else %}
+                <div style="display: none;"></div>
+                {% endif %}
+            </div>
+        </section>
+        <div class="articlecontent">
+            <div class="content">{{ article.content | safe }}</div>
+        </div>
+    </article>
+    <div class="aboutsec">
+        <!-- <img src="{% static 'core/media/about.jpg' %}" alt="leroy" style="border-radius: 50%; border: 1px #c2c2c2b9 solid; max-width: 7em; padding: 0.3em;"> -->
+        <div>
+            <p class="header">Join the Discussion</h2>
+            <p>Hi there. Welcome to my personal website, a place for me to log snapshots of my life over the years, share stories as told by others, and periodically post technical content that may interest a couple other people. Thank you for being part of the community.</p>
+        </div>
+        <!-- <button onclick="document.getElementById('id01').style.display='block'">Send feedback</button> -->
+        {% if user.is_authenticated %}
+        <button onclick="document.getElementById('newComment').style.display='block'">Add a comment</button>
+        {% else %}
+        <a href="{% url 'account:auth' %}"><button>Please log in or sign up to comment</button></a>
+        {% endif %}
+
+        {% if article.commentCount == 0 %}
+        <p class="responses">Be the first to comment</h5>
+        {% elif article.commentCount == 1 %}
+        <p class="responses">1 response</h5>
+        {% else %}
+        <p class="responses">{{ article.commentCount }} responses</h5>
+        {% endif %}
+    </div>
+
+    {% if article.comments %}
+    <div class="commentsec">
+        {% for comment in article.comments %}
+        <div class="commentBox">
+            <div class="maincomment">
+                <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                    <p style="color: #c2c2c2b9; font-weight: bolder;">👤 {{ comment.user.alias }}<br>🕰 {{ comment.timestamp |  date:'F j, Y'}}</p>
+                    <div style="display: flex; flex-direction: row; gap: 17px;">
+                        <img class="readyreply" src="{% static 'core/media/reply.svg' %}" alt="reply to {{ comment.user.alias }}:  {{ comment.content | safe }}" width="20" height="20" style="cursor: pointer;">
+                        {% if request.user == comment.user %}
+                        <img class="readydelete" src="{% static 'core/media/delete.svg' %}" alt="delete comment" width="20" height="20" style="cursor: pointer;">
+                        {% endif %}
+                        <!-- <img src="{% static 'core/media/flag.svg' %}" alt="flag comment" width="20" height="20" style="cursor: pointer;"> -->
+                    </div>
+                </div>
+                <br>
+                <p>{{ comment.content | safe }}</p>
+            </div>
+
+            <!-- new main comment form -->
+            {% if user.is_authenticated %}
+            <div class="replyform" style="display: none;">
+                <form class="modal-container" method="POST" action=".">
+                    {% csrf_token %}
+                    <div class="modal-section">
+                        {{ form.content }}
+                        <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                        <div style="display: flex; justify-content: right; gap: 12px;">
+                            <button class="modal-btn" type="submit" name="submitcomment" style="padding: 4px 7px; background-color: #FAFAFA; font-weight: 800;">Post Reply</button>
+                            <button class="closereply" type="button">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {% else %}
+            <div class="replyform" style="display: none;">
+                <div class="replywarning">
+                    <p>You must log in to reply</p>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- delete main comment form -->
+            {% if user.is_authenticated %}
+            <div class="deleteform" style="background: #000; border: 2px #f25c05 solid; width: 100%; margin: 30px 0 0 0; display: none;">
+                <form class="modal-container" method="POST" action=".">
+                    {% csrf_token %}
+                    <div class="modal-section" style="padding: 7px;">
+                        <p style="text-align: left; color: #f25c05; font-size: large; font-weight: bold;">Are you sure you want to delete your comment!</p>
+                        <input name="comment_id" type="hidden" value="{{ comment.id }}">
+                        <div style="display: flex; justify-content: right; gap: 12px;">
+                            <button class="modal-btn" type="submit" name="deletecomment" style="padding: 4px 7px; background-color: #FAFAFA; font-weight: 800;">Continue</button>
+                            <button class="closedelete" style="padding: 4px 7px; font-weight: 800; font-family: CrimsonPro; margin-right: 10px; cursor: pointer; border: none; background-color: transparent; color: #FAFAFA;" type="button">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {% endif %}
+
+            {% for reply in comment.replies.all %}
+            <section class="replyBox">
+                <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start;">
+                    <div>
+                        <p style="color: #c2c2c2b9; font-weight: bolder;">👤 {{ reply.user.alias }}<br>🕰 {{ reply.timestamp | timesince }} ago</p>
+                        <br>
+                        <p>{{ reply.content | safe }}</p>
+                    </div>
+                    <div style="display: flex; flex-direction: row; gap: 17px;">
+                        {% if request.user == reply.user %}
+                        <img class="readydelete2" src="{% static 'core/media/delete.svg' %}" alt="delete comment" width="20" height="20" style="cursor: pointer;">
+                        {% endif %}
+                        <!-- <img src="{% static 'core/media/flag.svg' %}" alt="flag comment" width="20" height="20" style="cursor: pointer;"> -->
+                    </div>
+                </div> 
+                <!-- delete reply form -->
+                {% if user.is_authenticated %}
+                <div class="deleteform" style="background: #000; border: 2px #f25c05 solid; width: 100%; margin: 30px 0 0 0; display: none;">
+                    <form class="modal-container" method="POST" action=".">
+                        {% csrf_token %}
+                        <div class="modal-section" style="padding: 7px;">
+                            <p style="text-align: left; color: #f25c05; font-size: large; font-weight: bold;">Are you sure you want to delete your comment!</p>
+                            <input name="comment_id" type="hidden" value="{{ reply.id }}">
+                            <div style="display: flex; justify-content: right; gap: 12px;">
+                                <button class="modal-btn" type="submit" name="deletecomment" style="padding: 4px 7px; background-color: #FAFAFA; font-weight: 800;">Continue</button>
+                                <button class="closedelete" style="padding: 4px 7px; font-weight: 800; font-family: CrimsonPro; margin-right: 10px; cursor: pointer; border: none; background-color: transparent; color: #FAFAFA;" type="button">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                {% endif %}               
+            </section>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div> 
+    {% endif %}
+</div>
+
+{% if user.is_authenticated %}
+<div id="newComment" class="modal">
+    <div class="modal-content" style="max-width:600px">
+
+        <div style="padding: 0.01em;">
+            <p style="text-align: left; color: #000; font-size: x-large; font-weight: bold;">Add a comment!</p>
+            <span onclick="document.getElementById('newComment').style.display='none'" class="modal-close-btn" title="Close">&times;</span>
+        </div>
+
+        <form method="POST" action="." class="modal-container">{% csrf_token %}
+            <div class="modal-section">
+                <div>
+                    <!-- {{ form }} -->
+                    <!-- <textarea name="content" rows="4" type="text" minlength="1" maxlength="420" placeholder="This conversation is moderated."></textarea> -->
+                    {{ form.content }}
+                    <p style="color: #929292; font-size: small; padding-top: 1px;">1/420 maximum characters.</p>
+                </div>
+                <div style="display: flex; justify-content: right; padding-top: 4px;">
+                    <button class="modal-btn-alt" type="submit" name="submitcomment">Post</button>
+                    <button class="modal-btn" onclick="document.getElementById('newComment').style.display='none'" type="button">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endif %}
+{% endblock page %}

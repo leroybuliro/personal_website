@@ -179,7 +179,7 @@ article .pubDate {
 }
 
 /** For mobile devices **/
-@media screen and (max-width: 599px) {
+@media screen and (max-width: 767px) {
 
     .blogpage {
         padding: 20vh 3vw;
@@ -193,13 +193,5 @@ article .pubDate {
 
     .articlediv {
         grid-template-columns: 1fr 2fr;
-    }
-}
-
-/** For tablet devices **/
-@media screen and (min-width: 600px) and (max-width: 767px) {
-
-    .blogpage {
-        padding: 22% 3vw 2vh 3vw;
     }
 }
