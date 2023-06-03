@@ -6,6 +6,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     os.getenv('LOST'),
+    '127.0.0.1',
+    "localhost",
 ]
 
 CSRF_COOKIE_SECURE = False

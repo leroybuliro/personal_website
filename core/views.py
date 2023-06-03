@@ -85,7 +85,7 @@ def BlogView(request):
 
     return render(request, 'core/blog.html', context)
 
-def ArticleView(request, pk, slug):
+def PostView(request, pk, slug):
     context = {}
     context['current_year'] = datetime.now().year
     obj = get_object_or_404(Article, id=pk, slug=slug)
@@ -157,5 +157,5 @@ def ArticleView(request, pk, slug):
             messages.add_message(request,messages.SUCCESS, 'Successfully submitted')
             return redirect(reverse('core:article', kwargs={'pk':obj.pk, 'slug':obj.slug}))
 
-    return render(request, 'core/articlelayout.html', context)
+    return render(request, 'core/post.html', context)
     
