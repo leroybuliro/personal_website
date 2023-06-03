@@ -195,3 +195,11 @@ article .pubDate {
         grid-template-columns: 1fr 2fr;
     }
 }
+
+/** For tablet devices **/
+@media screen and (min-width: ) (max-width: 767px) {
+
+    .blogpage {
+        padding: 2vh 3vw;
+    }
+}
