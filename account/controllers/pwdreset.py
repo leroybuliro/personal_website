@@ -18,7 +18,9 @@ class pwdResetForm(forms.Form):
     email = forms.CharField(
         max_length=100, 
         label=_("Email"),
-        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{2,20}$', message=_("Please enter a valid email"))],
+        validators=[RegexValidator(
+            r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{2,20}$',
+            message=_("Please enter a valid email"))],
     )
 
     def clean_email(self):
@@ -47,7 +49,10 @@ def resetPwdView(request):
             email = request.POST['email']
             user = User.objects.get(email__iexact=email)
             resetPwdEmailing(request, user)
-            request.session['msg'] = "Thank you for your request. If the username or email you entered matched our records, we have emailed a link you can use to reset your password."
+            request.session['msg'] = "Thank you for your request. If the username or email \
+                you entered matched our records, we have emailed a link you can use to reset \
+                    your password. If you do not receive an email then no matching account \
+                        was found for the email you provided. Please create a new account."
             return redirect('account:authmsg')
 
     return render(request, "account/pwdreset.html", context)
