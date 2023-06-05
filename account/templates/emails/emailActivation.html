@@ -1,11 +1,11 @@
 {% autoescape on %}
 Hello,
 
-Somebody just used this email address to sign up at Leroy.Buliro.net.
+Somebody just used this email address to sign up at LeroyBuliro.com.
 
 If this was you, verify your email by clicking on the link below:
 
 http://{{siteURI}}{% url 'account:activate' uidcoded=uid token=token %}
 
-Thanks, The Leroy.Buliro.net Team
+-- The LeroyBuliro.com Team
 {% endautoescape %}

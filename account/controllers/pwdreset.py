@@ -73,7 +73,7 @@ def resetPwdEmailing(request, user):
         'siteURI': get_current_site(request),
     })
     email = EmailMessage(
-        'Ask and you shall receive... a password reset - The Buliro.net Team',
+        'Ask and you shall receive... a password reset - The LeroyBuliro.com Team',
         emailTemplate,
         settings.EMAIL_HOST_USER,
         [request.POST['email'],],
@@ -86,7 +86,7 @@ def resetPwdDoneEmailing(request, user):
         'name': user.full_name,
     })
     email = EmailMessage(
-        'Your Buliro.net password has been updated',
+        'Your LeroyBuliro.com password has been updated',
         emailTemplate,
         settings.EMAIL_HOST_USER,
         [request.POST['email'],],
