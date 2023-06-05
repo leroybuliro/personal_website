@@ -52,7 +52,7 @@ def resetPwdView(request):
             request.session['msg'] = "Thank you for your request. If the username or email \
                 you entered matched our records, we have emailed a link you can use to reset \
                     your password. If you do not receive an email then no matching account \
-                        was found for the email you provided. Please create a new account."
+                        was found for the information you provided. Please create a new account."
             return redirect('account:authmsg')
 
     return render(request, "account/pwdreset.html", context)
