@@ -158,4 +158,4 @@ def PostView(request, pk, slug):
             return redirect(reverse('core:article', kwargs={'pk':obj.pk, 'slug':obj.slug}))
 
     return render(request, 'core/post.html', context)
-    
+ 

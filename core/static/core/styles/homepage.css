@@ -445,6 +445,9 @@ video {
     width: 100%;
     height: auto;
 }
+#music img {
+    margin-bottom: 10px;
+}
 .music_img {
     display: grid;
     grid-template-columns: 1fr 1fr;
