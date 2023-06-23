@@ -33,6 +33,7 @@
     flex-direction: row;
     gap: 14px;
     padding: 30px 7vw;
+    backdrop-filter: blur(8px);
 }
 
 .search div {
