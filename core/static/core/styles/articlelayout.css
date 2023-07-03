@@ -20,19 +20,27 @@
 .articlepage {
     display: flex;
     flex-direction: column;
+    display: -ms-flexbox;
+    -ms-flex-direction: column;
     grid-gap: 2rem;
     margin-bottom: 40px;
 }
 .articlemeta {
     font-size: 15px;
     display: grid;
-    width: 100%;
     grid-template-columns:  1fr 1fr;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr 1fr;
+    display: -webkit-grid;
+    -webkit-grid-template-columns: 1fr 1fr;
+    width: 100%;
     margin: 0% 0% 3% 0%;
 }
 .meta {
     padding: 0 8%;
     display: grid;
+    display: -ms-grid;
+    display: -webkit-grid;
     justify-items: center;
     align-content: center;
     text-align: center;
@@ -72,6 +80,8 @@
 }
 .credit {
     align-content: flex-end;
+    justify-items: flex-end;
+    text-align: right;
     color: #000;
     font-family: Raleway;
     font-size: 0.8em;
@@ -107,6 +117,14 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    display: -ms-flexbox;
+    -ms-flex-direction: row;
+    -ms-flex-align: center;
+    -ms-flex-pack: space-between;
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+    -webkit-align-items: center;
+    -webkit-justify-content: space-between;
     margin: 7px 4px;
     grid-gap: 7px;
 }
@@ -176,6 +194,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    display: -ms-flexbox;
+    -ms-flex-direction: column;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
     grid-gap: 2em;
 }
 .aboutsec .header {
@@ -258,6 +284,12 @@ textarea {
     display: flex;
     justify-content: center;
     align-items:center;
+    display: -ms-flexbox;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
 }
 .replywarning p {
     font: CrimsonPro 14px bold;
@@ -268,6 +300,8 @@ textarea {
 @media screen and (max-width: 810px) {
     .articlemeta {
         grid-template-columns:  1fr;
+        -ms-grid-columns: 1fr;
+        -webkit-grid-template-columns: 1fr;
     }
     .meta {
         padding: 27px 2%;

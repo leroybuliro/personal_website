@@ -3,7 +3,8 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
         <link rel="icon" type="image/png" href="{% static 'core/media/favicon.ico' %}">
         <title>{% block pagetitle %}{% endblock pagetitle %} - Leroy Buliro</title>
     </head>
@@ -29,6 +30,23 @@
             width:100%;
             height:100%;
             overflow:auto;
+
+            touch-action: pan-y;
+            -ms-touch-action: pan-y;
+            -webkit-touch-callout: none;
+
+            zoom: reset;
+            
+            user-select: text;
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            -o-user-select: text;
+
+            text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
         }
         /* Page Section */
         #page-container {

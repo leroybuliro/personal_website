@@ -108,10 +108,15 @@
    ========================================================================== */
 
 .featured {
+    margin: 0 0 30px 0;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    margin: 0 0 30px 0;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    display: -webkit-grid;
+    -webkit-grid-template-columns: 1fr;
+    
 }
 
 .featuredsec {
@@ -119,6 +124,10 @@
     text-decoration: none;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr 1fr;
+    display: -webkit-grid;
+    -webkit-grid-template-columns: 1fr 1fr;
     grid-gap: 22px;
     cursor: pointer;
     color: #FFFFFF;
@@ -129,7 +138,13 @@
     height: auto;
     object-fit: cover;
     object-position: center;
+    -ms-grid-row-span: 1;
+    grid-row-end: span 1;
     aspect-ratio: 3 / 2;
+    -webkit-aspect-ratio: 3 / 2;
+    -moz-aspect-ratio: 3 / 2;
+    -ms-aspect-ratio: 3 / 2;
+    -o-aspect-ratio: 3 / 2;
     overflow: hidden;
 }
 
@@ -142,12 +157,22 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    display: -ms-flexbox;
+    -ms-flex-direction: column;
+    -ms-flex-pack: justify;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    -webkit-justify-content: space-around;
     text-align: left;
 }
 
 .meta {
     display: flex;
     flex-direction: column;
+    display: -ms-flexbox;
+    -ms-flex-direction: column;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
     gap: 22px;
 }
 
@@ -204,6 +229,10 @@
     .featuredsec {
         display: flex;
         flex-direction: column;
+        display: -ms-flexbox;
+        -ms-flex-direction: column;
+        display: -webkit-flex;
+        -webkit-flex-direction: column;
         gap: 17px;
     }
 
@@ -228,14 +257,22 @@
    ========================================================================== */
 
 .posts {
+    display: -ms-grid;
+    -ms-grid-columns: 1fr 1fr 1fr 1fr;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    display: -webkit-grid;
+    -webkit-grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 22px;
 }
 
 .articlediv {
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
+    display: -webkit-grid;
+    -webkit-grid-template-columns: 1fr;
     grid-gap: 10px;
     color: #FFFFFF;
     text-decoration: none;
@@ -255,6 +292,10 @@
     object-fit: fill;
     object-position: center;
     aspect-ratio: 1 / 1;
+    -webkit-aspect-ratio: 1 / 1;
+    -moz-aspect-ratio: 1 / 1;
+    -ms-aspect-ratio: 1 / 1;
+    -o-aspect-ratio: 1 / 1;
     overflow: hidden;
 }
 
@@ -285,7 +326,11 @@
 .showbtn {
     width: 100%;
     display: flex;
-    place-content: center;
+    justify-content: center;
+    display: -ms-flexbox;
+    -ms-flex-pack: center;
+    display: -webkit-flex;
+    -webkit-justify-content: center;
     padding: 20px 0 30px;
 }
 
@@ -301,18 +346,23 @@
     padding: 1% 4%;
 }
 
+
 /** For mobile devices **/
 
 @media screen and (max-width: 767px) {
 
     .posts {
         grid-template-columns: 1fr;
-        gap: 22px;
+        -ms-grid-columns: 1fr;
+        -webkit-grid-template-columns: 1fr;
+        grid-gap: 22px;
         margin: 0 4px;
     }
 
     .articlediv {
         grid-template-columns: 1fr 2fr;
+        -ms-grid-columns: 1fr 2fr;
+        -webkit-grid-template-columns: 1fr 2fr;
     }
 
     .posts h2 {
@@ -368,6 +418,7 @@
     font-weight: 700;
     font-size: 20px;
     line-height: 1.7rem;
+    word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
@@ -438,6 +489,7 @@
     }
 }
 
+
 /* ==========================================================================
    #Music Screen
    ========================================================================== */
@@ -451,6 +503,10 @@ video {
 .music_img {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    display: -ms-grid; /* For IE10 */
+    -ms-grid-columns: 1fr 1fr; /* For IE10 */
+    display: -webkit-grid;
+    -webkit-grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
 }
 
@@ -460,6 +516,13 @@ video {
 }
 
 .music_img img:nth-child(3) {
+    display: grid;
     grid-column-start: 1;
     grid-column-end: 3;
+    display: -webkit-grid;
+    -webkit-grid-column-start: 1;
+    -webkit-grid-column-end: 3;
+    display: -ms-grid; /* For IE10 */
+    -ms-grid-columns: 1; /* For IE10 */
+    -ms-grid-column-span: 2; /* For IE10 */
 }

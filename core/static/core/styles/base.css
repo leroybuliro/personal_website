@@ -46,6 +46,23 @@ body {
     background-color: #000;
     overflow: hidden;
     overflow-y: scroll;
+    
+    touch-action: pan-y;
+    -ms-touch-action: pan-y;
+    -webkit-touch-callout: none;
+
+    zoom: reset;
+    
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    -o-user-select: text;
+
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
 }
 
 p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
@@ -100,6 +117,14 @@ nav {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    display: -ms-flexbox;
+    -ms-flex-direction: row;
+    -ms-flex-pack: center;
+    -ms-flex-align: center;
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
     grid-gap: 7px;
 }
 
@@ -158,6 +183,8 @@ nav {
     }
     .mobile-menu {
         display: flex;
+        display: -ms-flexbox;
+        display: -webkit-flex;
     }
 }
 
@@ -241,6 +268,14 @@ nav {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    /* display: -ms-flexbox; */
+    -ms-flex-direction: row;
+    -ms-flex-pack: space-around;
+    -ms-flex-align: center;
+    /* display: -webkit-flex; */
+    -webkit-flex-direction: row;
+    -webkit-justify-content: space-around;
+    -webkit-align-items: center;
     padding: 4px 0;
     z-index: 3;
 }
@@ -254,6 +289,12 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
+    display: -ms-flexbox;
+    -ms-flex-direction: column;
+    -ms-flex-align: center;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    -webkit-align-items: center;
     cursor: pointer;
 }
 
@@ -286,6 +327,12 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    display: -ms-flexbox;
+    -ms-flex-direction: column;
+    -ms-flex-pack: center;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    -webkit-justify-content: center;
     gap: 10px;
     background-color: #171a23;
     padding: 14px 0;
@@ -316,6 +363,10 @@ footer .review img {
     width: 100%;
     display: flex;
     flex-direction: column;
+    display: -ms-flexbox;
+    -ms-flex-direction: column;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
     gap: 17px;
     padding: 1% 2% 0 2%;
 }
@@ -331,6 +382,14 @@ footer .review img {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    display: -ms-flexbox;
+    -ms-flex-direction: row;
+    -ms-flex-pack: space-between;
+    -ms-flex-align: center;
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+    -webkit-justify-content: space-between;
+    -webkit-align-items: center;
     padding: 0 2%;
 }
 
@@ -344,9 +403,15 @@ footer .review img {
 
 .footer .socials {
     display: flex;
-    gap: 17px;
     align-items: center;
     justify-content: center;
+    display: -ms-flexbox;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
+    gap: 17px;
 }
 
 .footer .socials > a, a:hover {
@@ -370,6 +435,8 @@ footer .review img {
 
     .sform form {
         flex-direction: column;
+        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
     }
 
     .sfEmail {
