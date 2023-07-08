@@ -1,0 +1,33 @@
+version: '1.0'
+
+services:
+  app:
+    image: python:3.8.10
+    command: python manage.py runserver 0.0.0.0:8000
+    # build: .
+    ports:
+      - "8000:8000"
+    working_dir: /usr/src/app
+    volumes:
+      - ./:/usr/src/app
+      # - /tmp/app/mysqld:/run/mysqld
+    depends_on:
+      - db
+  
+  mysql:
+    image: mysql:8.0
+    volumes:
+      - ./lb-mysql-data:/var/lib/mysql
+      # - /tmp/app/mysqld:/var/run/mysqld
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE='mydatabase'
+      - MYSQL_USER='root'
+      - MYSQL_PASSWORD='some_password'
+      - MYSQL_ROOT_PASSWORD='some_password'
+      - MYSQL_HOST=''
+
+volume:
+  lb-mysql-data:
+```
