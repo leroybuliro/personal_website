@@ -24,10 +24,6 @@ Git, GitHub Actions, Docker, Jira
 
     `cd RecipeRealm/`
 
-3. make a virtual environment
-
-    `python3 -m venv virtualenv`
-
 ### Option 1: Running the Django app on Docker
 In the terminal, change directory to the personal_website directory then run the command below to start the app container.
 
@@ -53,6 +49,10 @@ Once the container has stopped, you can remove it by using the rm command.
 `docker rm -f <the-container-ids>`
 
 ### Option 2: Running the Django app locally
+
+Make a virtual environment
+
+`python3 -m venv virtualenv`
 
 Activate virtual environment
 
