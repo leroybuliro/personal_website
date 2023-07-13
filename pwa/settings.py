@@ -4,6 +4,7 @@ from pathlib import Path
 load_dotenv()
     
 BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = "leroy.buliro.net"
 SECRET_KEY = os.getenv('pwakey')
 
 if os.getenv('environment') == "dev":
@@ -61,7 +62,7 @@ WSGI_APPLICATION = 'pwa.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', 
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': os.getenv('MYSQLname'),
         'USER': os.getenv('MYSQLuser'),
         'PASSWORD': os.getenv('MYSQLpwd'),

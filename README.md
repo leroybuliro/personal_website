@@ -1,30 +1,28 @@
-# Overview
-## Application and Data
-Python, Django, MySQL, HTML5, CSS3, jQuery
+![site logo](./core/static/core/media/lbwhite.svg)
 
-## DevOps
-Git, GitHub Actions, Docker, Jira
-
-
-<br><br>
-
-# Project setup
-## Requirements
+# Prerequisites
+* Ubuntu 20.04 LTS
 * Python version 3.8.10
 * MySQL version 8.0
 * Docker version 24.0.2
 
-## Getting started
+# Installation guide
 
-1. clone repository
+## Install dependencies:
+### Ubuntu 20.04
+```
+$ (sudo) apt-get install build-essential python3 python3-pip python3-dev python3-setuptools python3-virtualenv libxml2-dev libxslt1-dev python3-dev libpq-dev libffi-dev libssl-dev
+```
 
-    `git clone https://githubm/leroysb/reciperealm.git`
+### Install requirements in a virtual environment
+```
+$ python3 -m venv virtualenv
+$ virtualenv /path/to/venv
+$ source /path/to/venv/bin/activate
+(venv)$ pip install -r requirements.txt
+```
 
-2. change directory
-
-    `cd RecipeRealm/`
-
-### Option 1: Running the Django app on Docker
+## Option 1: Running the Django app on Docker
 In the terminal, change directory to the personal_website directory then run the command below to start the app container.
 
 <!-- `docker compose up -d` -->
@@ -48,28 +46,14 @@ Once the container has stopped, you can remove it by using the rm command.
 
 `docker rm -f <the-container-ids>`
 
-### Option 2: Running the Django app locally
+## Option 2: Running the Django app locally
 
-Make a virtual environment
-
-`python3 -m venv virtualenv`
-
-Activate virtual environment
-
-```
-source virtualenv/bin/activate # For Linux
-source virtualenv/scripts/activate # For Windows
-```
-
-Install python3 packages
-
-`pip install -r requirements.txt`
-
-Setup database
+### Setup Website
+#### Create db
 
 `cat setup_mysql.sql | mysql -h localhost -u root -p`
 
-Migrate database
+#### Migrate db
 
 `python3 manage.py migrate`
 
@@ -77,6 +61,9 @@ Reach out to one of the collaborators and request for the environment variables.
 
 `echo "your environment variables" >> .env`
 
-Run server locally
+### Start development server locally
 
 `python3 manage.py runserver`
+
+# License
+Licensed under the [3-clause BSD license](https://en.wikipedia.org/wiki/BSD_licenses#3-clause_license_.28.22Revised_BSD_License.22.2C_.22New_BSD_License.22.2C_or_.22Modified_BSD_License.22.29)
