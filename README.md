@@ -2,7 +2,7 @@
 
 # Prerequisites
 * Ubuntu 20.04 LTS
-* Python version 3.8.10
+* Python version 3.8
 * MySQL version 8.0
 * Docker version 24.0.2
 
